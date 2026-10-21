@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOIRFRAME STUDIO — Websites That Sell While You Sleep</title>
+<meta name="description" content="Noirframe Studio builds premium websites for bakeries, restaurants, salons, clinics, real estate and brands. Full site $500, live in 3 days. Free demo first.">
+<style>
+  :root{
+    --bg:#070708; --bg2:#0d0d10; --ink:#f4f1ea; --dim:#9a97a3; --line:#232329;
+    --gold:#e8c15a; --violet:#8b7cf6; --pink:#f06ba8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto}
+  body{background:var(--bg);color:var(--ink);font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--gold);color:#000}
+  a{color:inherit;text-decoration:none}
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E")}
+  /* ---------- NAV ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px 4vw;mix-blend-mode:difference}
+  .logo{font-weight:800;letter-spacing:.28em;font-size:15px}
+  .logo span{color:var(--gold)}
+  .navlinks{display:flex;gap:28px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+  .navlinks a:hover{color:var(--ink)}
+  @media(max-width:700px){.navlinks{display:none}}
+  /* ---------- HERO ---------- */
+  #hero{position:relative;height:100vh;min-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center;perspective:1200px}
+  .hero-glow{position:absolute;inset:0;background:
+    radial-gradient(55% 45% at 25% 20%,rgba(139,124,246,.28),transparent 60%),
+    radial-gradient(50% 40% at 80% 75%,rgba(232,193,90,.18),transparent 60%),
+    radial-gradient(40% 35% at 70% 15%,rgba(240,107,168,.12),transparent 60%)}
+  .hero-inner{position:relative;z-index:3;text-align:center;padding:0 5vw;will-change:transform,opacity}
+  .kicker{font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+  h1.mega{font-size:clamp(52px,11.5vw,168px);line-height:.92;font-weight:900;letter-spacing:-.01em;text-transform:uppercase}
+  h1.mega .outline{display:block;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+  h1.mega .gold{color:var(--gold)}
+  .hero-sub{max-width:620px;margin:26px auto 0;color:var(--dim);font-size:clamp(15px,1.6vw,19px);line-height:1.65}
+  .hero-cta{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:15px 30px;border-radius:100px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;transition:.25s}
+  .btn-solid{background:var(--gold);color:#0a0a0a}
+  .btn-solid:hover{background:#f5d47c;transform:translateY(-2px)}
+  .btn-ghost{border:1px solid #3a3a42;color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  /* floating 3D work cards in hero */
+  .float-stage{position:absolute;inset:0;z-index:2;transform-style:preserve-3d;pointer-events:none}
+  .fcard{position:absolute;width:170px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 60px rgba(0,0,0,.55);will-change:transform}
+  .fcard img{width:100%;height:100%;object-fit:cover;display:block}
+  .fcard::after{content:attr(data-tag);position:absolute;left:10px;bottom:10px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;background:rgba(0,0,0,.55);padding:5px 9px;border-radius:100px;backdrop-filter:blur(4px)}
+  @media(max-width:900px){.fcard{width:110px}}
+  .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:4;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--dim)}
+  .scroll-hint::after{content:"";display:block;width:1px;height:44px;background:linear-gradient(var(--gold),transparent);margin:10px auto 0;animation:drip 1.8s infinite}
+  @keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  /* ---------- MARQUEE ---------- */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;overflow:hidden;background:var(--bg2)}
+  .marquee-track{display:flex;gap:0;width:max-content;animation:mq 30s linear infinite}
+  .marquee span{font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);padding:0 26px;white-space:nowrap}
+  .marquee b{color:var(--gold);font-weight:600}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative}
+  .sec-head{padding:110px 5vw 40px;display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(38px,6vw,84px);font-weight:900;text-transform:uppercase;line-height:.95}
+  .sec-head h2 em{font-style:normal;color:var(--gold)}
+  .sec-head p{max-width:420px;color:var(--dim);line-height:1.7;font-size:15px}
+  .sec-tag{font-size:11px;letter-spacing:.45em;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
+  /* ---------- WORK: pinned horizontal scroll ---------- */
+  #work{overflow:hidden}
+  .hwrap{height:100vh;display:flex;align-items:center}
+  .htrack{display:flex;gap:3.2vw;padding:0 6vw;will-change:transform}
+  .panel{flex:0 0 auto;width:min(400px,80vw);display:flex;flex-direction:column;gap:18px}
+  .panel .frame{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);aspect-ratio:9/13;background:#111;transform-style:preserve-3d;will-change:transform}
+  .panel video{width:100%;height:100%;object-fit:cover;display:block}
+  .panel .num{position:absolute;top:14px;left:16px;z-index:2;font-size:12px;letter-spacing:.3em;background:rgba(0,0,0,.55);padding:6px 11px;border-radius:100px;backdrop-filter:blur(4px)}
+  .panel h3{font-size:26px;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+  .panel h3 span{color:var(--gold)}
+  .panel p{color:var(--dim);line-height:1.65;font-size:14.5px}
+  .panel .live{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:3px;width:max-content}
+  .panel .live:hover{color:#f5d47c}
+  .panel.endcard{align-items:flex-start;justify-content:center}
+  .panel.endcard h3{font-size:40px;line-height:1.05}
+  /* ---------- SERVICES ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:30px 5vw 110px}
+  @media(max-width:900px){.svc-grid{grid-template-columns:1fr}}
+  .svc{border:1px solid var(--line);border-radius:24px;padding:38px 32px;background:linear-gradient(160deg,#101014,#0a0a0c);transform-style:preserve-3d;will-change:transform}
+  .svc .ico{font-size:30px;margin-bottom:18px;display:block}
+  .svc h3{font-size:21px;font-weight:800;text-transform:uppercase;margin-bottom:12px}
+  .svc p{color:var(--dim);line-height:1.7;font-size:14.5px}
+  .svc ul{margin-top:16px;list-style:none;color:var(--dim);font-size:14px;line-height:2}
+  .svc ul li::before{content:"— ";color:var(--gold)}
+  /* ---------- PROCESS ---------- */
+  #process{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:20px 5vw 110px}
+  @media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+  .step{padding:28px 26px;border-left:1px solid var(--line)}
+  .step .n{font-size:52px;font-weight:900;color:transparent;-webkit-text-stroke:1px var(--gold);display:block;margin-bottom:14px}
+  .step h4{font-size:16px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+  .step p{color:var(--dim);font-size:14px;line-height:1.65}
+  /* ---------- PRICING / CTA ---------- */
+  .price{padding:130px 5vw;text-align:center}
+  .price h2{font-size:clamp(40px,7vw,96px);font-weight:900;text-transform:uppercase;line-height:.95}
+  .price h2 .gold{color:var(--gold)}
+  .price p{color:var(--dim);max-width:560px;margin:24px auto 0;line-height:1.7;font-size:16px}
+  .price .big{font-size:clamp(60px,10vw,140px);font-weight:900;color:transparent;-webkit-text-stroke:1.5px var(--ink);display:block;margin:26px 0 6px}
+  footer{border-top:1px solid var(--line);padding:44px 5vw;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--dim);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  footer a:hover{color:var(--gold)}
+  .reveal{opacity:0;transform:translateY(46px)}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav>
+  <div class="logo">NOIR<span>FRAME</span></div>
+  <div class="navlinks">
+    <a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="#start">Start a project</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="hero">
+  <div class="hero-glow"></div>
+  <div class="float-stage" id="floatStage">
+    <div class="fcard" data-tag="Bakery" style="left:6%;top:16%"><img src="assets/reel-01-bakery.jpg" alt="Bakery website"></div>
+    <div class="fcard" data-tag="Restaurant" style="right:7%;top:12%"><img src="assets/reel-02-restaurant.jpg" alt="Restaurant website"></div>
+    <div class="fcard" data-tag="Real Estate" style="left:11%;bottom:10%"><img src="assets/reel-03-realestate.jpg" alt="Real estate website"></div>
+    <div class="fcard" data-tag="3D Product" style="right:12%;bottom:13%"><img src="assets/reel-06-aegis3d.jpg" alt="3D product experience"></div>
+  </div>
+  <div class="hero-inner" id="heroInner">
+    <div class="kicker">Noirframe Studio — Web Design &amp; 3D Experiences</div>
+    <h1 class="mega">Websites<span class="outline">That Sell</span><span class="gold">While You Sleep</span></h1>
+    <p class="hero-sub">We build premium websites for bakeries, restaurants, salons, clinics, real estate and brands — designed to turn visitors into orders, bookings and calls. Full site for <b style="color:var(--ink)">$500</b>, live in <b style="color:var(--ink)">3 days</b>. We build your free demo first — you only pay if you love it.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="https://wa.me/917984609431?text=Hi%20Noirframe%2C%20I%20want%20a%20free%20demo%20for%20my%20business" target="_blank" rel="noopener">Get my free demo</a>
+      <a class="btn btn-ghost" href="#work">See the work</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee"><div class="marquee-track" id="mqTrack">
+  <span>Bakeries <b>✦</b></span><span>Restaurants <b>✦</b></span><span>Salons &amp; Nails <b>✦</b></span><span>Dental Clinics <b>✦</b></span><span>Real Estate <b>✦</b></span><span>3D Product Stores <b>✦</b></span><span>Coaches <b>✦</b></span><span>Florists <b>✦</b></span>
+</div></div>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="sec-head">
+    <div>
+      <div class="sec-tag">Selected Work — Live &amp; Clickable</div>
+      <h2>The <em>Work</em></h2>
+    </div>
+    <p>Every project below is a real, working website — not a mockup. Watch the film, then open the live demo and click around. This is exactly what your customers would get.</p>
+  </div>
+  <div class="hwrap" id="hwrap">
+    <div class="htrack" id="htrack">
+
+      <article class="panel">
+        <div class="frame"><span class="num">01 / Bakery</span>
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/reel-01-bakery.jpg"><source src="assets/reel-01-bakery-web.mp4" type="video/mp4"></video></div>
+        <h3>Bake By <span>Renu</span></h3>
+        <p>A home bakery that used to take orders over scattered DMs. Now the menu, prices and order button live on one page — customers order while the baker sleeps.</p>
+        <a class="live" href="bake-by-renu.html" target="_blank" rel="noopener">Open live demo →</a>
+      </article>
+
+      <article class="panel">
+        <div class="frame"><span class="num">02 / Restaurant</span>
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/reel-02-restaurant.jpg"><source src="assets/reel-02-restaurant-web.mp4" type="video/mp4"></video></div>
+        <h3>Ember <span>&amp; Spice</span></h3>
+        <p>A restaurant site that keeps customers on its own page instead of losing them to delivery apps — full menu, story and a direct order button.</p>
+        <a class="live" href="ember-spice/" target="_blank" rel="noopener">Open live demo →</a>
+      </article>
+
+      <article class="panel">
+        <div class="frame"><span class="num">03 / Real Estate</span>
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/reel-03-realestate.jpg"><source src="assets/reel-03-realestate-web.mp4" type="video/mp4"></video></div>
+        <h3>Skyline <span>Residences</span></h3>
+        <p>Million-dollar listings presented like they deserve — cinematic scroll, galleries and enquiry buttons that turn browsers into buyers.</p>
+        <a class="live" href="skyline-residences/" target="_blank" rel="noopener">Open live demo →</a>
+      </article>
+
+      <article class="panel">
+        <div class="frame"><span class="num">04 / Dental Clinic</span>
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/reel-04-dental.jpg"><source src="assets/reel-04-dental-web.mp4" type="video/mp4"></video></div>
+        <h3>Pearl <span>Dental</span></h3>
+        <p>A clinic website that books itself — treatments, prices and a booking button, so the front desk stops living on the phone.</p>
+        <a class="live" href="pearl-dental/" target="_blank" rel="noopener">Open live demo →</a>
+      </article>
+
+      <article class="panel">
+        <div class="frame"><span class="num">05 / Salon</span>
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/reel-05-salon.jpg"><source src="assets/reel-05-salon-web.mp4" type="video/mp4"></video></div>
+        <h3>Luxe <span>Locks</span></h3>
+        <p>Every chair booked, solid. Services, stylists and prices up front, with one-tap booking straight from Instagram traffic.</p>
+        <a class="live" href="luxe-locks/" target="_blank" rel="noopener">Open live demo →</a>
+      </article>
+
+      <article class="panel">
+        <div class="frame"><span class="num">06 / 3D Product</span>
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/reel-06-aegis3d.jpg"><source src="assets/reel-06-aegis3d-web.mp4" type="video/mp4"></video></div>
+        <h3>Aegis <span>3D Store</span></h3>
+        <p>Customers spin the product in real 3D, explore it from every angle — and buy with the confidence a flat photo never gives.</p>
+        <a class="live" href="aegis-3d.html" target="_blank" rel="noopener">Open live demo →</a>
+      </article>
+
+      <article class="panel">
+        <div class="frame"><span class="num">07 / Astrology</span>
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/reel-07-astrology.jpg"><source src="assets/reel-07-astrology-web.mp4" type="video/mp4"></video></div>
+        <h3>Vedic <span>Astrology</span></h3>
+        <p>A paid-consultation funnel where strangers enter their details and pay instantly — proof a good page can sell a service with zero staff.</p>
+        <a class="live" href="vedic-astrology-funnel.html" target="_blank" rel="noopener">Open live demo →</a>
+      </article>
+
+      <article class="panel endcard">
+        <h3>Your business<br>could be <span style="color:var(--gold)">08.</span></h3>
+        <p style="color:var(--dim);line-height:1.7;max-width:320px">We build the demo with your name, your photos, your prices — free. If it doesn't make you say wow, you pay nothing.</p>
+        <a class="btn btn-solid" style="margin-top:10px" href="https://wa.me/917984609431?text=Hi%20Noirframe%2C%20I%20want%20a%20free%20demo%20for%20my%20business" target="_blank" rel="noopener">Start mine</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="sec-head">
+    <div>
+      <div class="sec-tag">What We Do</div>
+      <h2>Built To <em>Convert</em></h2>
+    </div>
+    <p>A pretty site that doesn't sell is a poster. Everything we build is designed around one thing: turning a visitor into a customer.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc reveal"><span class="ico">◈</span>
+      <h3>Business Websites</h3>
+      <p>Complete websites for local businesses that live on Instagram and WhatsApp today — and lose customers because of it.</p>
+      <ul><li>Menu / services / price list</li><li>WhatsApp order &amp; booking button</li><li>Google-ready: maps, reviews, hours</li><li>Loads fast on any phone</li></ul>
+    </div>
+    <div class="svc reveal"><span class="ico">⬢</span>
+      <h3>3D &amp; Scroll Experiences</h3>
+      <p>The sites people screenshot and share. Real-time 3D products, cinematic scroll stories, motion that makes a brand feel expensive.</p>
+      <ul><li>Interactive 3D product viewers</li><li>Scroll-driven brand stories</li><li>Premium animation &amp; micro-interactions</li><li>Awwwards-grade art direction</li></ul>
+    </div>
+    <div class="svc reveal"><span class="ico">◎</span>
+      <h3>Funnels That Take Payment</h3>
+      <p>Landing pages and funnels for coaches, astrologers, creators and services — built to take a stranger from click to paid.</p>
+      <ul><li>Offer + proof + urgency structure</li><li>Instant payment checkout</li><li>WhatsApp follow-up built in</li><li>Made for ad &amp; reel traffic</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="process">
+  <div class="sec-head">
+    <div>
+      <div class="sec-tag">How It Works</div>
+      <h2>Free Demo <em>First.</em><br>Always.</h2>
+    </div>
+    <p>No advance, no risk, no sales calls. You see your own business as a finished website before you spend a single rupee or dollar.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><span class="n">01</span><h4>We study you</h4><p>Your Instagram, your menu, your prices, your best work — we learn the business before touching a pixel.</p></div>
+    <div class="step reveal"><span class="n">02</span><h4>We build your demo</h4><p>A real, working demo with your name and content. Not a template with someone else's photos.</p></div>
+    <div class="step reveal"><span class="n">03</span><h4>You judge it</h4><p>Love it? We finish and launch the full site in 3 days. Don't? You pay nothing and keep your time.</p></div>
+    <div class="step reveal"><span class="n">04</span><h4>It sells for you</h4><p>Orders, bookings and enquiries land on your WhatsApp — while you run your business, or sleep.</p></div>
+  </div>
+</section>
+
+<!-- ================= PRICING / CTA ================= -->
+<section class="price" id="start">
+  <div class="sec-tag" style="color:var(--gold)">One Flat Price</div>
+  <h2>Your Full Website</h2>
+  <span class="big">$500</span>
+  <p>One-time. Live in 3 days. Includes your pages, order/booking buttons, and launch support. Projects range $100–$1,000 depending on scope — the demo is always free.</p>
+  <div class="hero-cta">
+    <a class="btn btn-solid" href="https://wa.me/917984609431?text=Hi%20Noirframe%2C%20I%20want%20a%20free%20demo%20for%20my%20business" target="_blank" rel="noopener">Claim my free demo</a>
+    <a class="btn btn-ghost" href="https://instagram.com/noir_frame_studio" target="_blank" rel="noopener">@noir_frame_studio</a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Noirframe Studio</div>
+  <div><a href="#work">Work</a> &nbsp;·&nbsp; <a href="#services">Services</a> &nbsp;·&nbsp; <a href="#start">Start</a></div>
+  <div>Websites that sell while you sleep</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  // Marquee: duplicate content for a seamless loop
+  var mq = document.getElementById('mqTrack');
+  mq.innerHTML += mq.innerHTML;
+
+  // Fallback if the animation library fails to load: make everything usable
+  if(!window.gsap){
+    document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity=1;el.style.transform='none';});
+    document.getElementById('hwrap').style.overflowX='auto';
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* HERO — 3D scroll-out: content tilts back and fades, work cards fly past at different depths */
+  var cards = gsap.utils.toArray('.fcard');
+  var depths = [1.6, 2.3, 1.2, 2.0];
+  cards.forEach(function(c,i){
+    gsap.set(c,{rotationY:(i%2? -14:14), rotationX:6, z: depths[i]*60});
+    gsap.to(c,{y:(i%2? -1:1)*90, rotationZ:(i%2? 3:-3), repeat:-1, yoyo:true, duration:3.4+i*.5, ease:'sine.inOut'});
+  });
+  gsap.timeline({scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:true}})
+    .to('#heroInner',{y:-120, rotationX:38, scale:.88, opacity:0, ease:'none'},0)
+    .to(cards,{y:function(i){return -260*depths[i];}, z:function(i){return 260*depths[i];}, rotationY:0, opacity:0, ease:'none', stagger:0},0);
+
+  /* WORK — pinned horizontal scroll with a 3D lean on each frame */
+  var track = document.getElementById('htrack');
+  function dist(){ return Math.max(0, track.scrollWidth - window.innerWidth); }
+  gsap.to(track,{x:function(){return -dist();}, ease:'none',
+    scrollTrigger:{trigger:'#work', start:'top top', end:function(){return '+='+dist();}, pin:true, scrub:1, invalidateOnRefresh:true}});
+  gsap.utils.toArray('.panel .frame').forEach(function(f){
+    gsap.fromTo(f,{rotationY:-16, z:-70},{rotationY:0, z:0, ease:'none',
+      scrollTrigger:{trigger:'#work', start:'top top', end:function(){return '+='+dist();}, scrub:1.4}});
+  });
+
+  /* Reveals */
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    gsap.to(el,{opacity:1, y:0, duration:1, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 86%'}});
+  });
+
+  /* 3D tilt on service cards */
+  document.querySelectorAll('.svc').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r = card.getBoundingClientRect();
+      var rx = ((e.clientY-r.top)/r.height - .5) * -10;
+      var ry = ((e.clientX-r.left)/r.width - .5) * 12;
+      gsap.to(card,{rotationX:rx, rotationY:ry, transformPerspective:800, duration:.4});
+    });
+    card.addEventListener('mouseleave',function(){ gsap.to(card,{rotationX:0, rotationY:0, duration:.6}); });
+  });
+})();
+</script>
+</body>
+</html>
