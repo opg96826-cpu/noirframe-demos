@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Needkingdom Bakery — Freshly Baked Happiness, Daily</title>
+<style>
+:root{--cream:#faf4ea;--crust:#5c3a21;--gold:#c98f2d;--ink:#3a2a1c;--soft:#f3e8d5}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--ink);line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;background:rgba(250,244,234,.97);border-bottom:2px solid var(--gold);z-index:10}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+.brand{font-size:1.35rem;font-weight:bold;color:var(--crust);letter-spacing:.5px}
+.brand span{color:var(--gold)}
+nav ul{display:flex;gap:22px;list-style:none}
+nav a{color:var(--crust);text-decoration:none;font-size:.95rem}
+nav a:hover{color:var(--gold)}
+.hero{text-align:center;padding:90px 20px 70px;background:linear-gradient(180deg,#f7ecd9,#faf4ea)}
+.hero h1{font-size:2.6rem;color:var(--crust);margin-bottom:12px}
+.hero p{font-size:1.15rem;color:#6b523a;margin-bottom:28px}
+.btn{display:inline-block;background:var(--crust);color:#fff;padding:13px 34px;border-radius:30px;text-decoration:none;font-size:1rem;transition:.25s}
+.btn:hover{background:var(--gold);transform:translateY(-2px)}
+section{padding:60px 0}
+h2{font-size:1.9rem;color:var(--crust);text-align:center;margin-bottom:8px}
+.sub{text-align:center;color:#8a6f52;margin-bottom:36px}
+.menugroup{margin-bottom:34px}
+.menugroup h3{color:var(--gold);font-size:1.25rem;border-bottom:2px solid var(--gold);display:inline-block;margin-bottom:16px}
+.item{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px dashed #d9c8a8}
+.item .n{font-weight:bold;font-size:1.05rem}
+.item .d{color:#8a6f52;font-size:.92rem;margin:2px 0 0}
+.item .p{color:var(--crust);font-weight:bold;font-size:1.1rem;white-space:nowrap;margin-left:16px}
+form{background:var(--soft);border-radius:14px;padding:36px;max-width:560px;margin:0 auto}
+form label{display:block;margin-bottom:14px;font-size:.95rem;color:var(--crust)}
+form input,form textarea{width:100%;padding:11px 13px;border:1px solid #d9c8a8;border-radius:8px;font-size:1rem;margin-top:6px;font-family:inherit}
+form button{width:100%;margin-top:8px;cursor:pointer;border:none}
+.note{text-align:center;font-size:.85rem;color:#8a6f52;margin-top:12px}
+#ok{display:none;background:#e6f2e1;border:1px solid #8fbf7f;color:#2f6b2f;border-radius:10px;padding:18px;text-align:center;margin-top:16px}
+.about{text-align:center;max-width:680px;margin:0 auto;color:#6b523a;font-size:1.08rem}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+.quote{background:#fff;border-left:4px solid var(--gold);border-radius:8px;padding:18px;font-style:italic}
+.quote b{display:block;margin-top:10px;font-style:normal;color:var(--crust)}
+footer{background:var(--crust);color:#f3e8d5;text-align:center;padding:28px 20px;font-size:.95rem;margin-top:20px}
+@media(max-width:640px){.hero h1{font-size:2rem}nav ul{display:none}.quotes{grid-template-columns:1fr}form{padding:24px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><div class="brand">Needkingdom <span>Bakery</span></div>
+<ul><li><a href="#menu">Menu</a></li><li><a href="#order">Order</a></li><li><a href="#about">About</a></li></ul></div></nav>
+
+<div class="hero">
+<h1>Freshly Baked Happiness, Daily</h1>
+<p>Wake up to the scent of warm, buttery goodness.</p>
+<a class="btn" href="#order">Order Now</a>
+</div>
+
+<section id="menu"><div class="wrap">
+<h2>Our Menu</h2><p class="sub">Baked fresh every single morning</p>
+
+<div class="menugroup"><h3>Cakes</h3>
+<div class="item"><div><div class="n">Vanilla Bean Dream</div><div class="d">Moist sponge, whipped cream, berries</div></div><div class="p">$18</div></div>
+<div class="item"><div><div class="n">Dark Chocolate Fudge</div><div class="d">Rich layers, ganache, cocoa nibs</div></div><div class="p">$20</div></div>
+<div class="item"><div><div class="n">Lemon Blueberry Loaf</div><div class="d">Zesty citrus, bursting berries</div></div><div class="p">$14</div></div>
+</div>
+
+<div class="menugroup"><h3>Breads &amp; Pastries</h3>
+<div class="item"><div><div class="n">Sourdough Country Loaf</div><div class="d">Crusty exterior, airy soft crumb</div></div><div class="p">$8</div></div>
+<div class="item"><div><div class="n">Butter Croissant</div><div class="d">Flaky layers, French butter, golden</div></div><div class="p">$4</div></div>
+<div class="item"><div><div class="n">Cinnamon Morning Bun</div><div class="d">Sweet dough, sticky cinnamon sugar</div></div><div class="p">$5</div></div>
+</div>
+
+<div class="menugroup"><h3>Seasonal</h3>
+<div class="item"><div><div class="n">Pumpkin Spice Roll</div><div class="d">Warm spices, maple cream glaze</div></div><div class="p">$6</div></div>
+<div class="item"><div><div class="n">Fruit Tart</div><div class="d">Seasonal fruit, vanilla custard, pastry</div></div><div class="p">$7</div></div>
+</div>
+</div></section>
+
+<section id="order" style="background:#fff"><div class="wrap">
+<h2>Reserve Your Fresh Bakes</h2><p class="sub">Skip the line — order ahead, pick up warm</p>
+<form id="orderform" onsubmit="event.preventDefault();document.getElementById('ok').style.display='block';this.style.display='none';">
+<label>Full Name<input required></label>
+<label>Email Address<input type="email" required></label>
+<label>Phone Number<input type="tel" required></label>
+<label>Pickup Date<input type="date" required></label>
+<label>Special Instructions<textarea rows="3" placeholder="Cake size, allergies, custom message…"></textarea></label>
+<button class="btn" type="submit">Submit Order</button>
+</form>
+<div id="ok">🎉 Thank you! Your order is in — we will confirm your pickup time within 24 hours.</div>
+<p class="note">We will confirm your pickup time within 24 hours.</p>
+</div></section>
+
+<section id="about"><div class="wrap">
+<h2>Our Story</h2>
+<p class="about">Our family has perfected these recipes over three generations, ensuring every item is made with love. We bake fresh batches every single morning so you can taste the difference.</p>
+<div class="quotes">
+<div class="quote">"The sourdough is the best I have ever had."<b>— Sarah</b></div>
+<div class="quote">"Perfect for weddings and birthday celebrations every time."<b>— Michael</b></div>
+</div>
+</div></section>
+
+<footer>123 Baker Street, Springfield &nbsp;|&nbsp; (555) 123-4567 &nbsp;|&nbsp; Mon–Sat: 7am–4pm</footer>
+</body>
+</html>
