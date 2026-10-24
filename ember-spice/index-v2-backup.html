@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMBER & SPICE — Modern Indian Fine Dining</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --gold:#d98a3d; --gold2:#f2b879; --ink:#0b0806; --ink2:#14100a; --cream:#f3ead9; --muted:#bfae8d; --line:rgba(255,255,255,.16); }
+  html { scroll-behavior:smooth; }
+  body { background:var(--ink); color:var(--cream); font-family:Georgia,serif; overflow-x:hidden; }
+  a { color:inherit; }
+  nav { position:fixed; top:0; left:0; right:0; z-index:40; display:flex; justify-content:space-between; align-items:center; padding:20px 5vw; background:linear-gradient(180deg, rgba(5,4,3,.88), transparent); }
+  .logo { font-size:17px; letter-spacing:5px; color:var(--gold2); }
+  nav .links { display:flex; gap:28px; font-family:Arial,sans-serif; font-size:11.5px; letter-spacing:2.5px; text-transform:uppercase; align-items:center; }
+  nav a { color:#d8ccb0; text-decoration:none; } nav a:hover { color:var(--gold2); }
+  .pill { border:1px solid var(--gold); padding:9px 20px; color:var(--gold2) !important; border-radius:999px; }
+  .kicker { font-family:Arial,sans-serif; letter-spacing:6px; font-size:11.5px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  h2 { font-size:clamp(32px,5vw,54px); font-weight:400; line-height:1.15; margin-bottom:16px; }
+  h2 em, .giant em { font-style:italic; color:var(--gold2); }
+  .lead { font-family:Arial,sans-serif; color:var(--muted); max-width:580px; line-height:1.9; font-size:14.5px; }
+  .reveal { opacity:0; transform:translateY(42px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* Hero */
+  .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; text-align:center; padding:0 6vw 11vh; overflow:hidden; }
+  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55; }
+  .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(0deg, var(--ink) 4%, transparent 55%, rgba(5,4,3,.45)); }
+  .hero-inner { position:relative; z-index:2; }
+  .giant { font-size:clamp(52px,9vw,118px); font-weight:400; line-height:1.02; text-shadow:0 4px 30px rgba(0,0,0,.6); }
+  .hero-sub { font-family:Arial,sans-serif; font-size:14px; color:#e2d5b8; margin-top:18px; text-shadow:0 2px 14px rgba(0,0,0,.6); }
+  .scroll-cue { position:relative; z-index:2; margin-top:34px; font-family:Arial,sans-serif; font-size:10.5px; letter-spacing:4px; color:#cfc3a8; text-transform:uppercase; animation:bob 2.4s ease-in-out infinite; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+  /* Scroll dish showcase */
+  #showcase { height:800vh; position:relative; }
+  #show-sticky { position:sticky; top:0; height:100vh; overflow:hidden; display:flex; align-items:center; }
+  #show-sticky::before { content:""; position:absolute; inset:0; background:radial-gradient(80% 90% at 32% 50%, rgba(217,138,61,.10), transparent 60%); }
+  .dish-img-wrap { position:absolute; left:0; top:0; width:58%; height:100%; }
+  .dish-img-wrap img { position:absolute; left:50%; top:50%; width:86%; max-height:74vh; object-fit:contain; transform:translate(-50%,-50%); opacity:0; transition:opacity .6s ease; filter:drop-shadow(0 30px 60px rgba(0,0,0,.6)); }
+  .dish-img-wrap img.on { opacity:1; }
+  .dish-copy { position:relative; z-index:3; margin-left:56%; width:24%; }
+  .dish-num { font-size:clamp(44px,5vw,72px); font-style:italic; color:var(--gold); line-height:1; }
+  .dish-num small { font-size:.45em; color:#a99a7c; font-style:normal; font-family:Arial,sans-serif; letter-spacing:2px; }
+  .dish-tag { font-family:Arial,sans-serif; letter-spacing:4px; font-size:11px; text-transform:uppercase; color:var(--gold); margin:14px 0 10px; }
+  .dish-name { font-size:clamp(34px,4.4vw,58px); font-weight:400; line-height:1.08; }
+  .dish-name em { font-style:italic; color:var(--gold2); }
+  .dish-desc { font-family:Arial,sans-serif; color:#d8ccb0; line-height:1.8; font-size:14px; margin-top:16px; max-width:340px; }
+  .dish-price { font-size:26px; color:var(--gold2); margin-top:18px; }
+  .dish-price span { font-family:Arial,sans-serif; font-size:11px; letter-spacing:2px; color:#a99a7c; text-transform:uppercase; margin-left:10px; }
+  .table-list { position:absolute; right:4vw; top:50%; transform:translateY(-50%); z-index:3; width:190px; }
+  .table-list .cap { font-family:Arial,sans-serif; font-size:10.5px; letter-spacing:4px; color:#a99a7c; text-transform:uppercase; margin-bottom:14px; }
+  .table-list button { display:block; width:100%; text-align:left; background:none; border:none; border-bottom:1px solid rgba(255,255,255,.12); color:#a99a7c; font-family:Arial,sans-serif; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; padding:11px 2px; cursor:pointer; }
+  .table-list button:hover { color:var(--gold2); }
+  .table-list button.on { color:var(--gold2); border-bottom-color:var(--gold); }
+  .table-list button b { color:var(--gold); font-weight:400; margin-right:8px; }
+  .show-progress { position:absolute; left:5vw; right:5vw; bottom:26px; z-index:3; height:2px; background:rgba(255,255,255,.14); }
+  .show-progress i { display:block; height:100%; width:0%; background:var(--gold); }
+  .show-cue { position:absolute; left:5vw; bottom:40px; z-index:3; font-family:Arial,sans-serif; font-size:10.5px; letter-spacing:4px; color:#cfc3a8; text-transform:uppercase; }
+
+  /* Marquee */
+  .marquee { overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:20px 0; white-space:nowrap; }
+  .marquee div { display:inline-block; animation:scroll-x 26s linear infinite; }
+  .marquee span { font-size:clamp(26px,3.4vw,42px); font-style:italic; color:var(--cream); margin-right:14px; }
+  .marquee b { color:var(--gold); font-weight:400; margin-right:14px; }
+  @keyframes scroll-x { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  section.block { padding:110px 6vw; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; max-width:1060px; width:100%; margin-top:48px; }
+  .stat { border:1px solid var(--line); background:linear-gradient(165deg, rgba(34,30,26,.9), rgba(14,12,9,.94)); padding:38px 18px; }
+  .stat .big { font-size:36px; color:var(--gold2); margin-bottom:8px; }
+  .stat p { font-family:Arial,sans-serif; font-size:12px; letter-spacing:1.6px; text-transform:uppercase; color:#a99a7c; line-height:1.7; }
+  .story-wrap { display:grid; grid-template-columns:1fr 1fr; gap:50px; max-width:1060px; width:100%; text-align:left; align-items:center; margin-top:20px; }
+  .story-wrap img { width:100%; border:1px solid var(--line); }
+  .steps { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; max-width:1120px; width:100%; text-align:left; margin-top:48px; }
+  .steps div { border-top:2px solid var(--gold); padding-top:18px; }
+  .steps .n { font-size:30px; font-style:italic; color:var(--gold); margin-bottom:10px; }
+  .steps h3 { font-size:18px; font-weight:400; margin-bottom:8px; }
+  .steps p { font-family:Arial,sans-serif; font-size:13px; line-height:1.75; color:#a99a7c; }
+  .spices { display:grid; grid-template-columns:1fr 1fr; gap:10px 60px; max-width:760px; width:100%; text-align:left; margin-top:48px; }
+  .spices div { font-family:Arial,sans-serif; font-size:14px; letter-spacing:1.5px; text-transform:uppercase; color:#d8ccb0; border-bottom:1px solid rgba(255,255,255,.1); padding:14px 0; }
+  .spices b { color:var(--gold); font-weight:400; margin-right:12px; }
+  .menu { max-width:820px; width:100%; margin-top:48px; text-align:left; }
+  .menu-row { display:flex; align-items:baseline; gap:16px; padding:22px 0; border-bottom:1px solid rgba(255,255,255,.1); }
+  .menu-row img { width:72px; height:72px; object-fit:cover; border-radius:50%; border:1px solid var(--line); flex:none; align-self:center; }
+  .menu-row .nm { font-size:21px; }
+  .menu-row .nm small { display:block; font-family:Arial,sans-serif; font-size:12.5px; color:#a99a7c; margin-top:5px; line-height:1.6; }
+  .menu-row .dots { flex:1; border-bottom:1px dotted rgba(255,255,255,.25); }
+  .menu-row .pr { font-size:19px; color:var(--gold2); white-space:nowrap; }
+  .amen { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1060px; width:100%; text-align:left; margin-top:48px; }
+  .amen div { border-left:2px solid var(--gold); padding:8px 0 8px 20px; }
+  .amen h3 { font-size:19px; font-weight:400; margin-bottom:7px; }
+  .amen p { font-family:Arial,sans-serif; font-size:13px; line-height:1.75; color:#a99a7c; }
+  .tandoor-band { background:linear-gradient(165deg, rgba(34,30,26,.95), rgba(14,12,9,.95)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .tandoor-band .big-num { font-size:clamp(64px,9vw,120px); color:var(--gold2); line-height:1; }
+  .rules { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1060px; width:100%; text-align:left; margin-top:48px; }
+  .rules div { border:1px solid var(--line); padding:28px 24px; }
+  .rules h3 { font-size:18px; font-weight:400; margin-bottom:8px; color:var(--gold2); }
+  .rules p { font-family:Arial,sans-serif; font-size:13px; line-height:1.75; color:#a99a7c; }
+  .price-box { border:1px solid var(--gold); background:rgba(14,12,9,.9); padding:58px 8vw; max-width:800px; }
+  .price { font-size:clamp(30px,4.6vw,44px); color:var(--gold2); margin:10px 0; }
+  .btn { display:inline-block; font-family:Arial,sans-serif; letter-spacing:2px; font-size:13px; text-transform:uppercase; text-decoration:none; padding:16px 38px; transition:all .35s; }
+  .btn-solid { background:var(--gold); color:#14100a; font-weight:700; } .btn-solid:hover { background:var(--gold2); transform:translateY(-2px); }
+  footer { text-align:center; padding:36px 20px 46px; font-family:Arial,sans-serif; font-size:11px; letter-spacing:2px; color:#6f6450; text-transform:uppercase; }
+  @media(max-width:900px){
+    .dish-img-wrap { width:100%; opacity:.5; }
+    .dish-copy { margin-left:6vw; width:88%; }
+    .table-list { display:none; }
+    nav .links a:not(.pill) { display:none; }
+    .stats { grid-template-columns:repeat(2,1fr); }
+    .story-wrap, .amen, .rules { grid-template-columns:1fr; }
+    .steps { grid-template-columns:1fr 1fr; }
+    .spices { grid-template-columns:1fr; }
+    .menu-row img { width:56px; height:56px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">EMBER &amp; SPICE</div>
+  <div class="links">
+    <a href="#showcase">The Table</a><a href="#dum">The Dum</a><a href="#spices">Spices</a><a href="#menu">Menu</a>
+    <a class="pill" href="#visit">Reserve a Table</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <img src="assets-ember/hero-pot.webp" alt="A handi steaming fresh off the fire">
+  <div class="hero-inner">
+    <div class="kicker">Ember &amp; Spice · Modern Indian Fine Dining</div>
+    <div class="giant">Dinner, cooked<br><em>over live fire.</em></div>
+    <p class="hero-sub">Slow-cooked gravies, charcoal-kissed kebabs and breads straight off the tandoor wall.</p>
+  </div>
+  <div class="scroll-cue">Scroll ↓ — the dishes are coming</div>
+</header>
+
+<div id="showcase">
+  <div id="show-sticky">
+    <div class="dish-img-wrap" id="dish-imgs"></div>
+    <div class="dish-copy">
+      <div class="dish-num" id="dish-num">01 <small>/ 08</small></div>
+      <div class="dish-tag" id="dish-tag">Signature · Dum</div>
+      <div class="dish-name" id="dish-name">Chicken Dum<br><em>Biryani</em></div>
+      <p class="dish-desc" id="dish-desc">Bone-in chicken layered with saffron basmati, sealed under dough and slow-cooked in the handi. Served with salan and raita.</p>
+      <div class="dish-price" id="dish-price">₹649<span>On the menu</span></div>
+    </div>
+    <div class="table-list">
+      <div class="cap">The Table</div>
+      <div id="table-btns"></div>
+    </div>
+    <div class="show-cue">Scroll to serve the next dish</div>
+    <div class="show-progress"><i id="show-bar"></i></div>
+  </div>
+</div>
+
+<div class="marquee" aria-hidden="true"><div><span>Slow-Cooked</span><b>✦</b><span>Charcoal-Kissed</span><b>✦</b><span>Fresh Off The Tandoor</span><b>✦</b><span>Sealed In The Handi</span><b>✦</b><span>Opened At The Table</span><b>✦</b><span>Slow-Cooked</span><b>✦</b><span>Charcoal-Kissed</span><b>✦</b><span>Fresh Off The Tandoor</span><b>✦</b><span>Sealed In The Handi</span><b>✦</b><span>Opened At The Table</span><b>✦</b></div></div>
+
+<section class="block" id="about">
+  <div class="kicker reveal">The Room</div>
+  <h2 class="reveal">Where Fire Meets <em>Flavour.</em></h2>
+  <p class="lead reveal">A room that glows like the coals it cooks on — and a kitchen that treats patience as an ingredient.</p>
+  <div class="stats"><div class="stat reveal"><div class="big">120</div><p>Covers Nightly</p></div><div class="stat reveal"><div class="big">14</div><p>Signature Dishes</p></div><div class="stat reveal"><div class="big">4.9★</div><p>Guest Rating</p></div><div class="stat reveal"><div class="big">2</div><p>Chef's Counters</p></div></div>
+</section>
+
+<section class="block" id="dum" style="padding-top:30px;">
+  <div class="kicker reveal">The Dum</div>
+  <h2 class="reveal">Sealed At Dusk, <em>Opened At Your Table.</em></h2>
+  <div class="story-wrap">
+    <img class="reveal" src="assets-ember/hero-pot.webp" alt="The handi, sealed and steaming">
+    <div>
+      <p class="lead reveal" style="margin-bottom:20px;">Every handi starts the night before. Meat rests in yoghurt and red chilli, basmati is washed until the water runs clear, and whole spices are toasted until the kitchen smells like a wedding.</p>
+      <p class="lead reveal">Then we layer, seal the lid with dough, and leave it alone on a low fire. The handi is never opened in the kitchen — it is opened at your table, and never before.</p>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="reveal"><div class="n">01</div><h3>Marinate</h3><p>Overnight in yoghurt, red chilli and ground spices.</p></div>
+    <div class="reveal"><div class="n">02</div><h3>Fire The Tandoor</h3><p>Charcoal lit at dawn, burning clean by service.</p></div>
+    <div class="reveal"><div class="n">03</div><h3>Layer</h3><p>Meat, rice, saffron milk and fried onion, in order.</p></div>
+    <div class="reveal"><div class="n">04</div><h3>Seal &amp; Slow-Cook</h3><p>Dough-sealed lid, low fire, no peeking.</p></div>
+    <div class="reveal"><div class="n">05</div><h3>Open At The Table</h3><p>The first steam belongs to the guest, not the kitchen.</p></div>
+  </div>
+</section>
+
+<section class="block" id="spices" style="padding-top:30px;">
+  <div class="kicker reveal">The Spice Library</div>
+  <h2 class="reveal">Twelve Spices, <em>Ground Every Week.</em></h2>
+  <p class="lead reveal">Our masalas are ground in-house every week — never bought, never stored past their best.</p>
+  <div class="spices">
+    <div class="reveal"><b>01</b>Green Cardamom</div><div class="reveal"><b>02</b>Black Cardamom</div>
+    <div class="reveal"><b>03</b>Clove</div><div class="reveal"><b>04</b>Cinnamon</div>
+    <div class="reveal"><b>05</b>Star Anise</div><div class="reveal"><b>06</b>Saffron</div>
+    <div class="reveal"><b>07</b>Kashmiri Chilli</div><div class="reveal"><b>08</b>Black Pepper</div>
+    <div class="reveal"><b>09</b>Cumin</div><div class="reveal"><b>10</b>Coriander Seed</div>
+    <div class="reveal"><b>11</b>Bay Leaf</div><div class="reveal"><b>12</b>Mace</div>
+  </div>
+</section>
+
+<section class="block" id="menu" style="padding-top:30px;">
+  <div class="kicker reveal">The Menu</div>
+  <h2 class="reveal">Made For <em>The Whole Table.</em></h2>
+  <div class="menu" id="menu-list"></div>
+</section>
+
+<section class="block tandoor-band">
+  <div class="kicker reveal">From The Tandoor</div>
+  <div class="big-num reveal">480°C</div>
+  <h2 class="reveal" style="margin-top:14px;">Fire Does <em>The Talking.</em></h2>
+  <p class="lead reveal" style="margin:0 auto;">No handi leaves the kitchen until it has rested ten minutes off the fire.</p>
+</section>
+
+<section class="block" id="services" style="padding-top:30px;">
+  <div class="kicker reveal">Experience</div>
+  <h2 class="reveal">More Than <em>a Meal.</em></h2>
+  <p class="lead reveal">Three ways to sit down with us — pick your evening.</p>
+  <div class="amen"><div class="reveal"><h3>The Tasting Menu</h3><p>Nine courses through India's regions, ending with our smoked-old-fashioned dessert ritual.</p></div><div class="reveal"><h3>Chef's Counter</h3><p>Eight seats at the pass. Watch the tandoor breathe, eat what the chef hands you.</p></div><div class="reveal"><h3>Private Dining</h3><p>A candle-lit room for fourteen — family celebrations, done properly.</p></div><div class="reveal"><h3>Tandoor Nights</h3><p>Fridays: live tandoor and grill stations across the floor, unlimited breads.</p></div><div class="reveal"><h3>Spice Library</h3><p>Take the flavours home — our masalas, ground in-house every week.</p></div><div class="reveal"><h3>Full Bar</h3><p>Indian-spirit cocktails: filter-coffee old fashioneds, kokum spritzes, more.</p></div></div>
+</section>
+
+<section class="block" style="padding-top:30px;">
+  <div class="kicker reveal">House Rules</div>
+  <h2 class="reveal">Good To <em>Know.</em></h2>
+  <div class="rules">
+    <div class="reveal"><h3>Weekends Fill By Thursday</h3><p>Friday and Saturday seatings go first. Book early or take a weeknight — the fire is the same.</p></div>
+    <div class="reveal"><h3>One Seating At The Counter</h3><p>The chef's counter seats eight, once a night. What the chef hands you is what you eat.</p></div>
+    <div class="reveal"><h3>The Handi Opens At Your Table</h3><p>Sealed dishes are never opened in the kitchen. The first steam is yours.</p></div>
+  </div>
+</section>
+
+<section class="block" id="visit" style="padding-top:30px;">
+  <div class="price-box reveal">
+    <div class="kicker">Tasting Menu · Per Person</div>
+    <div class="price">₹2,499</div>
+    <p class="lead" style="margin:10px auto 30px;">Open every evening, 7 PM – 11:30 PM. Weekends fill by Thursday — book early.</p>
+    <a class="btn btn-solid" href="https://wa.me/917984609431?text=I%27d%20like%20to%20reserve%20a%20table%20at%20Ember%20%26%20Spice">Reserve a Table</a>
+  </div>
+</section>
+
+<footer>EMBER &amp; SPICE — Demo Experience · Crafted by Noirframe Studio</footer>
+
+<script>
+const DISHES = [
+  { n:"01", tag:"Signature · Dum", name:"Chicken Dum<br><em>Biryani</em>", desc:"Bone-in chicken layered with saffron basmati, sealed under dough and slow-cooked in the handi. Served with salan and raita.", price:"₹649", img:"assets-ember/dish-01.webp", label:"Chicken Dum Biryani" },
+  { n:"02", tag:"Most Ordered", name:"Butter<br><em>Chicken</em>", desc:"Charred tandoori chicken simmered in our tomato-butter makhani, finished with fresh cream and a cube of white butter.", price:"₹549", img:"assets-ember/dish-02.webp", label:"Butter Chicken" },
+  { n:"03", tag:"From The Tandoor", name:"Tandoori<br><em>Chicken</em>", desc:"Marinated overnight in Kashmiri chilli and yoghurt, roasted over charcoal until the edges char and the meat stays juicy.", price:"₹499", img:"assets-ember/dish-03.webp", label:"Tandoori Chicken" },
+  { n:"04", tag:"From The Grill", name:"Lamb Seekh<br><em>Kebab</em>", desc:"Hand-minced lamb smoked over coals, served with mint chutney, onion rings and lemon.", price:"₹599", img:"assets-ember/dish-04.webp", label:"Lamb Seekh Kebab" },
+  { n:"05", tag:"Vegetarian · Char-Grilled", name:"Paneer<br><em>Tikka</em>", desc:"Cottage cheese, peppers and onion char-grilled on skewers and brushed with smoked butter.", price:"₹449", img:"assets-ember/dish-05.webp", label:"Paneer Tikka" },
+  { n:"06", tag:"Slow-Cooked", name:"Dal<br><em>Makhani</em>", desc:"Black urad simmered overnight on embers, finished with butter and cream. The dish that never leaves the menu.", price:"₹399", img:"assets-ember/dish-06.webp", label:"Dal Makhani" },
+  { n:"07", tag:"From The Tandoor Wall", name:"Garlic Butter<br><em>Naan</em>", desc:"Slapped on the tandoor wall and brushed with garlic butter. Served blistering, straight to the table.", price:"₹149", img:"assets-ember/dish-07.webp", label:"Garlic Butter Naan" },
+  { n:"08", tag:"To Finish", name:"Mango<br><em>Lassi</em>", desc:"Alphonso mango churned with thick curd, cardamom and pistachio. The only way to end a dum meal.", price:"₹199", img:"assets-ember/dish-08.webp", label:"Mango Lassi" }
+];
+const stage = document.getElementById('showcase');
+const imgWrap = document.getElementById('dish-imgs');
+const numEl = document.getElementById('dish-num'), tagEl = document.getElementById('dish-tag');
+const nameEl = document.getElementById('dish-name'), descEl = document.getElementById('dish-desc');
+const priceEl = document.getElementById('dish-price'), barEl = document.getElementById('show-bar');
+const btnWrap = document.getElementById('table-btns');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let current = -1;
+const imgs = DISHES.map((d, i) => {
+  const im = new Image(); im.src = d.img; im.alt = d.label; imgWrap.appendChild(im); return im;
+});
+DISHES.forEach((d, i) => {
+  const b = document.createElement('button');
+  b.innerHTML = '<b>' + d.n + '</b>' + d.label;
+  b.addEventListener('click', () => {
+    const top = stage.offsetTop + ((i + 0.5) / DISHES.length) * (stage.offsetHeight - innerHeight);
+    scrollTo({ top, behavior: reduced ? 'auto' : 'smooth' });
+  });
+  btnWrap.appendChild(b);
+});
+const btns = btnWrap.children;
+function setDish(i) {
+  if (i === current) return; current = i;
+  imgs.forEach((im, j) => im.classList.toggle('on', j === i));
+  const d = DISHES[i];
+  numEl.innerHTML = d.n + ' <small>/ 08</small>';
+  tagEl.textContent = d.tag; nameEl.innerHTML = d.name; descEl.textContent = d.desc;
+  priceEl.innerHTML = d.price + '<span>On the menu</span>';
+  for (let j = 0; j < btns.length; j++) btns[j].classList.toggle('on', j === i);
+}
+function update() {
+  const r = stage.getBoundingClientRect();
+  const total = stage.offsetHeight - innerHeight;
+  const p = Math.min(1, Math.max(0, -r.top / total));
+  setDish(Math.min(DISHES.length - 1, Math.floor(p * DISHES.length)));
+  barEl.style.width = (p * 100) + '%';
+  if (!reduced) requestAnimationFrame(update);
+}
+setDish(0);
+if (!reduced) requestAnimationFrame(update);
+const menuList = document.getElementById('menu-list');
+DISHES.forEach(d => {
+  const row = document.createElement('div');
+  row.className = 'menu-row reveal';
+  row.innerHTML = '<img src="' + d.img + '" alt="' + d.label + '"><div class="nm">' + d.label + '<small>' + d.desc + '</small></div><div class="dots"></div><div class="pr">' + d.price + '</div>';
+  menuList.appendChild(row);
+});
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
