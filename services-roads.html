@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focused-on Construction | Road & Bridge Services</title>
+<meta name="description" content="Highways, bridges and structures — engineered for heavy traffic and generations of service.">
+<style>
+  :root{
+    --ink:#14181d; --ink2:#1d232a; --paper:#f4f1ea; --white:#ffffff;
+    --amber:#f5a623; --amber2:#ffb300; --steel:#8a97a5; --line:#e3ded2;
+    --muted:#5c6670;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;line-height:1.6}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:700}
+  h1{font-size:clamp(38px,6vw,68px);line-height:1.05;letter-spacing:-.01em}
+  h2{font-size:clamp(28px,4vw,44px);line-height:1.12;letter-spacing:-.01em}
+  h3{font-size:20px;line-height:1.3}
+  p.lead{font-size:clamp(17px,2vw,21px);color:#3d454e;max-width:640px}
+  .btn{display:inline-block;padding:14px 26px;border-radius:8px;font-weight:700;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-amber{background:var(--amber);color:#14181d;box-shadow:0 8px 24px rgba(245,166,35,.35)}
+  .btn-ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
+  .btn-dark{background:var(--ink);color:#fff}
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(20,24,29,.94);backdrop-filter:blur(6px);color:#fff}
+  .nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .logo{font-weight:900;letter-spacing:.04em;font-size:19px;text-decoration:none}
+  .logo span{color:var(--amber)}
+  .nav-links{display:flex;gap:22px;flex-wrap:wrap;font-size:14.5px;font-weight:600}
+  .nav-links a{text-decoration:none;opacity:.85}
+  .nav-links a:hover{opacity:1;color:var(--amber)}
+  /* hero */
+  .hero{position:relative;min-height:100svh;min-height:100vh;display:flex;align-items:flex-end;color:#fff;background:#14181d url("assets-foc/hero.jpg") center/cover no-repeat}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,29,.45) 0%,rgba(20,24,29,.35) 45%,rgba(20,24,29,.92) 100%)}
+  .hero-in{position:relative;z-index:2;width:100%;max-width:1160px;margin:0 auto;padding:140px 24px 64px}
+  .hero-in p.lead{color:rgba(255,255,255,.88);margin:18px 0 26px}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .badge{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;background:rgba(20,24,29,.45)}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  /* stats */
+  .stats{background:var(--ink);color:#fff}
+  .stats-in{max-width:1160px;margin:0 auto;padding:44px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .stat b{display:block;font-size:clamp(30px,4vw,44px);color:var(--amber);line-height:1.1}
+  .stat span{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);font-weight:600}
+  /* sections */
+  section{padding:84px 0}
+  section.tight{padding:56px 0}
+  .sec-head{max-width:700px;margin-bottom:38px}
+  .sec-head h2{margin:10px 0 12px}
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:start}
+  .about-grid p{margin-bottom:14px;color:#3d454e}
+  .profile{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;box-shadow:0 10px 30px rgba(20,24,29,.06)}
+  .profile h3{margin-bottom:16px}
+  .profile table{width:100%;border-collapse:collapse;font-size:15px}
+  .profile td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  .profile td:first-child{color:var(--muted);width:46%;padding-right:14px}
+  .profile tr:last-child td{border-bottom:0}
+  /* cards */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 26px rgba(20,24,29,.05)}
+  .card img{width:100%;height:210px;object-fit:cover}
+  .card-body{padding:22px}
+  .card-body p{color:#3d454e;font-size:15.5px;margin-top:8px}
+  .grid5{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .grid5 .card:last-child{grid-column:1/-1}
+  .proj-meta{margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber)}
+  .proj-meta span{color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0}
+  /* scroll build */
+  .build-scroll{position:relative;height:340vh;background:var(--ink)}
+  .build-sticky{position:sticky;top:0;height:100svh;height:100vh;overflow:hidden;color:#fff}
+  .build-sticky .stage{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .55s ease}
+  .build-sticky .stage.on{opacity:1}
+  .build-sticky::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,29,.55) 0%,rgba(20,24,29,0) 30%,rgba(20,24,29,0) 60%,rgba(20,24,29,.9) 100%)}
+  .build-ui{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:0 24px 44px}
+  .build-ui-in{max-width:1160px;margin:0 auto}
+  .build-ui .kicker{color:var(--amber)}
+  .build-ui h2{margin:8px 0 6px}
+  .build-ui p{color:rgba(255,255,255,.85);max-width:560px}
+  .progress{height:6px;background:rgba(255,255,255,.25);border-radius:999px;margin-top:22px;overflow:hidden}
+  .progress i{display:block;height:100%;width:0;background:var(--amber);border-radius:999px}
+  .dots{display:flex;gap:8px;margin-top:14px}
+  .dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35)}
+  .dots i.on{background:var(--amber)}
+  .scroll-hint{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:14px}
+  /* compare slider */
+  .compare{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(20,24,29,.22);background:#222;user-select:none;-webkit-user-select:none}
+  .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .compare .after{clip-path:inset(0 0 0 50%)}
+  .compare .tag{position:absolute;top:16px;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;pointer-events:none;z-index:3}
+  .compare .tag.before{left:16px;background:rgba(20,24,29,.75);color:#fff}
+  .compare .tag.after{right:16px;background:var(--amber);color:#14181d}
+  .compare .handle{position:absolute;top:0;bottom:0;left:50%;width:4px;background:#fff;transform:translateX(-50%);z-index:2;pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+  .compare .handle::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:#fff;color:#14181d;transform:translate(-50%,-50%);box-shadow:0 4px 16px rgba(0,0,0,.35);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='14' viewBox='0 0 22 14'%3E%3Cpath d='M7 1 1 7l6 6M15 1l6 6-6 6' fill='none' stroke='%2314181d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+  .compare input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:4;margin:0;appearance:none;-webkit-appearance:none}
+  .compare-note{text-align:center;color:var(--muted);margin-top:14px;font-size:14.5px}
+  /* contact */
+  .contact{background:var(--ink);color:#fff}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+  .contact-grid p{color:rgba(255,255,255,.8)}
+  .contact-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:28px}
+  .contact-box .row{margin-bottom:18px}
+  .contact-box .row:last-child{margin-bottom:0}
+  .contact-box small{display:block;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:700;font-size:12px;margin-bottom:4px}
+  .contact-box b{font-size:18px}
+  footer{background:#0e1114;color:rgba(255,255,255,.55);font-size:13.5px}
+  .foot-in{max-width:1160px;margin:0 auto;padding:26px 24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  /* reveal */
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.visible{opacity:1;transform:none}
+  @media (max-width:900px){
+    .stats-in{grid-template-columns:repeat(2,1fr)}
+    .about-grid,.contact-grid{grid-template-columns:1fr}
+    .grid3{grid-template-columns:1fr}
+    .grid5{grid-template-columns:1fr}
+    .grid5 .card:last-child{grid-column:auto}
+    section{padding:60px 0}
+  }
+  @media (max-width:560px){
+    .stats-in{grid-template-columns:1fr 1fr;gap:18px}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="focused-on-construction.html">FOCUSED<span>-ON</span> CONSTRUCTION</a>
+    <div class="nav-links">
+      <a href="focused-on-construction.html">Home</a>
+      <a href="about.html">Company</a>
+      <a href="services-roads.html">Roads &amp; Bridges</a>
+      <a href="services-water.html">Water</a>
+      <a href="services-highrise.html">High-Rise</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+<header style="background:#14181d url('assets-foc/bridge-humber.jpg') center/cover no-repeat;color:#fff;padding:150px 0 60px">
+  <div class="wrap"><div class="kicker">Services</div>
+  <h1 style="font-size:clamp(34px,5vw,56px);margin:10px 0">Road &amp; bridge infrastructure.</h1>
+  <p style="color:rgba(255,255,255,.88);max-width:640px;font-size:18px">Highways, crossings and structures — engineered for heavy traffic, harsh weather and a service life measured in generations.</p></div>
+</header>
+<section><div class="wrap">
+<div class="sec-head reveal"><div class="kicker">What we deliver</div><h2>From earthworks to opening day.</h2></div>
+<div class="grid3">
+<article class="card reveal"><div class="card-body"><h3>Highways &amp; carriageways</h3><p>New roads, widening and resurfacing — foundations, drainage and paving built to national highway standards.</p></div></article>
+<article class="card reveal"><div class="card-body"><h3>Bridges &amp; crossings</h3><p>Cable-stayed, suspension and viaduct structures over rivers, estuaries and valleys — including the UK landmark crossings in our portfolio.</p></div></article>
+<article class="card reveal"><div class="card-body"><h3>Earthworks &amp; structures</h3><p>Cuttings, embankments, retaining walls and culverts — the groundwork every road depends on.</p></div></article>
+</div></div></section>
+<section class="tight" id="road"><div class="wrap">
+<div class="sec-head reveal"><div class="kicker">Interactive &middot; Drag the slider</div><h2>From unfinished ground to finished road.</h2>
+<p class="lead">Drag the handle left or right. The completed road is revealed on one side and the unfinished road on the other — aligned in the same frame, so you watch the road transform in place.</p></div>
+<div class="compare reveal" id="compare">
+<img src="assets-foc/road-before-v2.jpg" alt="Unfinished unpaved road">
+<img class="after" id="afterImg" src="assets-foc/road-after.jpg" alt="Completed paved highway">
+<span class="tag before">Unfinished</span><span class="tag after">Completed</span>
+<div class="handle" id="handle"></div>
+<input type="range" id="compareRange" min="0" max="100" value="50" aria-label="Reveal completed road">
+</div>
+<p class="compare-note">Tip: drag anywhere on the image, or use the arrow keys with the slider focused.</p>
+<div class="reveal" style="margin-top:36px"><div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px">
+  <a class="btn btn-amber" href="contact.html">Start a project</a>
+  <a class="btn btn-dark" href="projects.html">See our projects</a>
+</div></div>
+</div></section>
+<footer>
+  <div class="foot-in">
+    <span>&copy; 2026 Focused-on Construction Private Limited. All rights reserved.</span>
+    <span><a href="focused-on-construction.html">Home</a> &middot; <a href="about.html">Company</a> &middot; <a href="projects.html">Projects</a> &middot; <a href="contact.html">Contact</a> &middot; Demo concept by Noirframe Studio &middot; Photography is illustrative.</span>
+  </div>
+</footer>
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("visible"); });
+  }
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute("data-target"));
+    var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+    var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
+    var start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / 1400, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var counters = document.querySelectorAll(".count");
+  if ("IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+      el.textContent = (el.getAttribute("data-prefix") || "") +
+        parseFloat(el.getAttribute("data-target")).toFixed(decimals) +
+        (el.getAttribute("data-suffix") || "");
+    });
+  }
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var range = document.getElementById("compareRange");
+  if (!range) return;
+  var afterImg = document.getElementById("afterImg");
+  var handle = document.getElementById("handle");
+  function setCompare(v) {
+    var pct = Math.min(Math.max(parseFloat(v) || 0, 0), 100);
+    afterImg.style.clipPath = "inset(0 0 0 " + pct + "%)";
+    handle.style.left = pct + "%";
+  }
+  range.addEventListener("input", function () { setCompare(range.value); });
+  setCompare(range.value);
+})();
+</script>
+</body>
+</html>
