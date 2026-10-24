@@ -7,57 +7,80 @@
 <meta name="description" content="Focused-on Construction Private Limited — major road and bridge infrastructure, water supply systems and high-rise construction across the United Kingdom since 1978.">
 <style>
   :root{
-    --ink:#14181d; --ink2:#1d232a; --paper:#f4f1ea; --white:#ffffff;
-    --amber:#f5a623; --amber2:#ffb300; --steel:#8a97a5; --line:#e3ded2;
-    --muted:#5c6670;
+    --paper:#f2ede3; --cream:#f0e9df; --white:#fffdf8;
+    --ink:#1a1511; --ink2:#241c15; --black:#100c09;
+    --terra:#d14d2e; --terra2:#b93a1f;
+    --line:#ddd3c2; --muted:#6b5f52;
+    --amber:#d14d2e;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  html{scroll-behavior:smooth;scroll-padding-top:88px}
   body{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;line-height:1.6}
   img{display:block;max-width:100%}
   a{color:inherit}
-  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-  .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:700}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .cond{font-family:"Arial Narrow","Liberation Sans Narrow","Helvetica Neue Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.01em}
+  .serif{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+  .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:700}
   h1{font-size:clamp(38px,6vw,68px);line-height:1.05;letter-spacing:-.01em}
-  h2{font-size:clamp(28px,4vw,44px);line-height:1.12;letter-spacing:-.01em}
+  h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(30px,4.2vw,52px);line-height:1.12;letter-spacing:0}
+  h2 .it{font-style:italic;color:var(--terra)}
   h3{font-size:20px;line-height:1.3}
   p.lead{font-size:clamp(17px,2vw,21px);color:#3d454e;max-width:640px}
-  .btn{display:inline-block;padding:14px 26px;border-radius:8px;font-weight:700;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+  .btn{display:inline-block;padding:14px 28px;border-radius:999px;font-weight:700;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
   .btn:hover{transform:translateY(-2px)}
-  .btn-amber{background:var(--amber);color:#14181d;box-shadow:0 8px 24px rgba(245,166,35,.35)}
+  .btn-amber{background:var(--terra);color:#fff;box-shadow:0 8px 24px rgba(209,77,46,.35)}
   .btn-ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
   .btn-dark{background:var(--ink);color:#fff}
-  /* nav */
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(20,24,29,.94);backdrop-filter:blur(6px);color:#fff}
-  .nav-in{max-width:1160px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .logo{font-weight:900;letter-spacing:.04em;font-size:19px;text-decoration:none}
-  .logo span{color:var(--amber)}
-  .nav-links{display:flex;gap:22px;flex-wrap:wrap;font-size:14.5px;font-weight:600}
+  .btn-outline-dark{border:2px solid var(--ink);color:var(--ink)}
+  /* nav — template: dark bar, wordmark left, links centre, pill CTA right */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(26,21,17,.96);color:#f0e9df}
+  .nav-in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .logo{font-weight:900;letter-spacing:.04em;font-size:21px;text-decoration:none}
+  .logo span{color:var(--terra)}
+  .nav-links{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
   .nav-links a{text-decoration:none;opacity:.85}
-  .nav-links a:hover{opacity:1;color:var(--amber)}
+  .nav-links a:hover{opacity:1;color:var(--terra)}
+  .nav-cta{background:var(--terra);color:#fff;padding:10px 22px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
   /* hero */
-  .hero{position:relative;min-height:100svh;min-height:100vh;display:flex;align-items:flex-end;color:#fff;background:#14181d url("assets-foc/hero.jpg") center/cover no-repeat}
+  .hero{position:relative;min-height:100svh;min-height:100vh;display:flex;align-items:flex-end;color:#fff;background:#1a1511 url("assets-foc/hero.jpg") center/cover no-repeat}
   .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,29,.45) 0%,rgba(20,24,29,.35) 45%,rgba(20,24,29,.92) 100%)}
-  .hero-in{position:relative;z-index:2;width:100%;max-width:1160px;margin:0 auto;padding:140px 24px 64px}
-  .hero-in p.lead{color:rgba(255,255,255,.88);margin:18px 0 26px}
-  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-  .badge{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;background:rgba(20,24,29,.45)}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,21,17,.55) 0%,rgba(26,21,17,.3) 45%,rgba(26,21,17,.94) 100%)}
+  .hero-in{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:140px 24px 64px}
+  .hero-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,233,223,.85);font-weight:700;margin-bottom:18px}
+  .hero h1{font-family:"Arial Narrow","Liberation Sans Narrow","Helvetica Neue Condensed",Arial,sans-serif;text-transform:uppercase;font-size:clamp(64px,11vw,148px);line-height:.92;letter-spacing:-.01em}
+  .hero h1 .serif{font-size:.82em;color:var(--cream)}
+  .hero-in p.lead{color:rgba(255,255,255,.88);margin:22px 0 28px}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+  .badge{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;background:rgba(26,21,17,.45)}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  /* ticker */
+  .ticker{overflow:hidden;background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;white-space:nowrap}
+  .ticker-track{display:inline-block;animation:tick 32s linear infinite}
+  .ticker span{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--ink)}
+  .ticker b{color:var(--terra);margin:0 18px}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+  /* statement */
+  .statement p{font-family:Georgia,"Times New Roman",serif;font-size:clamp(26px,3.6vw,46px);line-height:1.25;color:var(--ink);max-width:900px}
+  .statement p .it{font-style:italic;color:var(--terra)}
   /* stats */
-  .stats{background:var(--ink);color:#fff}
-  .stats-in{max-width:1160px;margin:0 auto;padding:44px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-  .stat b{display:block;font-size:clamp(30px,4vw,44px);color:var(--amber);line-height:1.1}
-  .stat span{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);font-weight:600}
+  .stats{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stats-in{max-width:1180px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .stat{border-left:1px solid var(--line);padding-left:22px}
+  .stat:first-child{border-left:0;padding-left:0}
+  .stat b{display:block;font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;font-size:clamp(38px,4.5vw,58px);color:var(--terra);line-height:1}
+  .stat span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
   /* sections */
   section{padding:84px 0}
   section.tight{padding:56px 0}
-  .sec-head{max-width:700px;margin-bottom:38px}
-  .sec-head h2{margin:10px 0 12px}
+  .sec-head{max-width:760px;margin-bottom:38px}
+  .sec-head h2{margin:12px 0 12px}
+  .sec-num{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700}
   /* about */
   .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:start}
   .about-grid p{margin-bottom:14px;color:#3d454e}
-  .profile{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;box-shadow:0 10px 30px rgba(20,24,29,.06)}
+  .profile{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:28px;box-shadow:0 10px 30px rgba(26,21,17,.06)}
   .profile h3{margin-bottom:16px}
   .profile table{width:100%;border-collapse:collapse;font-size:15px}
   .profile td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
@@ -65,73 +88,120 @@
   .profile tr:last-child td{border-bottom:0}
   /* cards */
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 26px rgba(20,24,29,.05)}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 8px 26px rgba(26,21,17,.05)}
   .card img{width:100%;height:210px;object-fit:cover}
   .card-body{padding:22px}
   .card-body p{color:#3d454e;font-size:15.5px;margin-top:8px}
   .grid5{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
   .grid5 .card:last-child{grid-column:1/-1}
-  .proj-meta{margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber)}
+  .proj-meta{margin-top:12px;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--terra)}
   .proj-meta span{color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0}
+  /* dark sections */
+  .dark{background:var(--ink);color:#f0e9df}
+  .dark p.lead{color:rgba(240,233,223,.82)}
+  .dark .sec-num{color:rgba(240,233,223,.55)}
   /* scroll build */
   .build-scroll{position:relative;height:340vh;background:var(--ink)}
   .build-sticky{position:sticky;top:0;height:100svh;height:100vh;overflow:hidden;color:#fff}
-  .build-sticky .stage{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .55s ease}
+  .build-sticky .stage{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
   .build-sticky .stage.on{opacity:1}
-  .build-sticky::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,29,.55) 0%,rgba(20,24,29,0) 30%,rgba(20,24,29,0) 60%,rgba(20,24,29,.9) 100%)}
+  .build-sticky::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,21,17,.55) 0%,rgba(26,21,17,0) 30%,rgba(26,21,17,0) 60%,rgba(26,21,17,.9) 100%)}
   .build-ui{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:0 24px 44px}
-  .build-ui-in{max-width:1160px;margin:0 auto}
-  .build-ui .kicker{color:var(--amber)}
-  .build-ui h2{margin:8px 0 6px}
+  .build-ui-in{max-width:1180px;margin:0 auto}
+  .build-ui .kicker{color:var(--terra)}
+  .build-ui h2{margin:8px 0 6px;color:#fff}
   .build-ui p{color:rgba(255,255,255,.85);max-width:560px}
   .progress{height:6px;background:rgba(255,255,255,.25);border-radius:999px;margin-top:22px;overflow:hidden}
-  .progress i{display:block;height:100%;width:0;background:var(--amber);border-radius:999px}
+  .progress i{display:block;height:100%;width:0;background:var(--terra);border-radius:999px}
   .dots{display:flex;gap:8px;margin-top:14px}
   .dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35)}
-  .dots i.on{background:var(--amber)}
+  .dots i.on{background:var(--terra)}
   .scroll-hint{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:14px}
-  /* compare slider */
-  .compare{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(20,24,29,.22);background:#222;user-select:none;-webkit-user-select:none}
+  /* day-phase slider — template's READ THE LIGHT, adapted */
+  .day-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+  .day-readout{margin-top:26px}
+  .day-phase{font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;text-transform:uppercase;font-size:clamp(40px,5vw,64px);line-height:1;color:#fff;transition:opacity 2s ease}
+  .day-time{font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);font-weight:800;margin-top:6px;transition:opacity 2s ease}
+  .day-visual{position:relative;border-radius:12px;overflow:hidden;background:#222}
+  .day-visual img{width:100%;aspect-ratio:16/10;object-fit:cover}
+  .day-tint{position:absolute;inset:0;opacity:0;transition:opacity 2s ease;pointer-events:none}
+  .day-tint.morning{background:linear-gradient(180deg,rgba(255,190,90,.30),rgba(255,150,60,.12))}
+  .day-tint.afternoon{background:linear-gradient(180deg,rgba(255,140,50,.34),rgba(255,110,40,.14))}
+  .day-tint.evening{background:linear-gradient(180deg,rgba(10,20,60,.55),rgba(5,10,35,.45))}
+  .day-tint.on{opacity:1}
+  .day-path{position:relative;height:110px;margin-top:18px;border-bottom:1px solid rgba(240,233,223,.25)}
+  .day-path svg{position:absolute;inset:0;width:100%;height:100%}
+  .day-sun{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--terra);box-shadow:0 0 0 6px rgba(209,77,46,.25),0 0 30px rgba(209,77,46,.6);transition:left 2s ease,bottom 2s ease;z-index:2}
+  .day-ticks{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,233,223,.6);font-weight:700;margin-top:8px}
+  .day-range{width:100%;margin-top:22px;accent-color:var(--terra);cursor:pointer}
+  .day-note{font-size:14px;color:rgba(240,233,223,.6);margin-top:10px}
+  /* compare slider — DIRECT drag, no transition on clip/handle */
+  .compare{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 18px 50px rgba(26,21,17,.22);background:#222;user-select:none;-webkit-user-select:none}
   .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .compare .after{clip-path:inset(0 0 0 50%)}
   .compare .tag{position:absolute;top:16px;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;pointer-events:none;z-index:3}
-  .compare .tag.before{left:16px;background:rgba(20,24,29,.75);color:#fff}
-  .compare .tag.after{right:16px;background:var(--amber);color:#14181d}
+  .compare .tag.before{left:16px;background:rgba(26,21,17,.75);color:#fff}
+  .compare .tag.after{right:16px;background:var(--terra);color:#fff}
   .compare .handle{position:absolute;top:0;bottom:0;left:50%;width:4px;background:#fff;transform:translateX(-50%);z-index:2;pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
-  .compare .handle::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:#fff;color:#14181d;transform:translate(-50%,-50%);box-shadow:0 4px 16px rgba(0,0,0,.35);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='14' viewBox='0 0 22 14'%3E%3Cpath d='M7 1 1 7l6 6M15 1l6 6-6 6' fill='none' stroke='%2314181d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+  .compare .handle::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;background:#fff;color:#1a1511;transform:translate(-50%,-50%);box-shadow:0 4px 16px rgba(0,0,0,.35);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='14' viewBox='0 0 22 14'%3E%3Cpath d='M7 1 1 7l6 6M15 1l6 6-6 6' fill='none' stroke='%231a1511' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
   .compare input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:4;margin:0;appearance:none;-webkit-appearance:none}
   .compare-note{text-align:center;color:var(--muted);margin-top:14px;font-size:14.5px}
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .step{border-top:2px solid var(--ink);padding-top:18px}
+  .step b{display:block;font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;font-size:44px;color:var(--terra);line-height:1}
+  .step h3{margin:10px 0 6px}
+  .step p{color:#3d454e;font-size:15.5px}
+  /* standards band */
+  .band{background:var(--terra);color:#fff}
+  .band p{font-family:Georgia,"Times New Roman",serif;font-size:clamp(26px,3.6vw,44px);line-height:1.25;max-width:900px}
+  .band small{display:block;margin-top:16px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:700}
+  /* dossier form */
+  .form input,.form select,.form textarea{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15.5px;background:var(--white);color:var(--ink)}
+  .form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--terra);border-color:var(--terra)}
+  .form textarea{min-height:120px;resize:vertical}
+  .form label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--muted);margin:14px 0 6px}
+  .form label:first-child{margin-top:0}
+  .enquiry-out{display:none;margin-top:18px;background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:18px;white-space:pre-wrap;font-size:14.5px}
+  .enquiry-out.show{display:block}
   /* contact */
   .contact{background:var(--ink);color:#fff}
   .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
   .contact-grid p{color:rgba(255,255,255,.8)}
-  .contact-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:28px}
+  .contact-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:28px}
   .contact-box .row{margin-bottom:18px}
   .contact-box .row:last-child{margin-bottom:0}
-  .contact-box small{display:block;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:700;font-size:12px;margin-bottom:4px}
+  .contact-box small{display:block;letter-spacing:.12em;text-transform:uppercase;color:var(--terra);font-weight:700;font-size:12px;margin-bottom:4px}
   .contact-box b{font-size:18px}
-  footer{background:#0e1114;color:rgba(255,255,255,.55);font-size:13.5px}
-  .foot-in{max-width:1160px;margin:0 auto;padding:26px 24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  /* footer — template: black, giant wordmark */
+  footer{background:var(--black);color:rgba(240,233,223,.6);font-size:13.5px}
+  .foot-giant{max-width:1180px;margin:0 auto;padding:48px 24px 8px;overflow:hidden}
+  .foot-giant div{font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;text-transform:uppercase;font-weight:900;font-size:clamp(52px,11.5vw,158px);line-height:.9;color:#f0e9df;white-space:nowrap}
+  .foot-giant div span{color:var(--terra)}
+  .foot-in{max-width:1180px;margin:0 auto;padding:20px 24px 30px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid rgba(240,233,223,.15)}
   /* reveal */
   .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .js .reveal.visible{opacity:1;transform:none}
   @media (max-width:900px){
     .stats-in{grid-template-columns:repeat(2,1fr)}
-    .about-grid,.contact-grid{grid-template-columns:1fr}
+    .about-grid,.contact-grid,.day-grid{grid-template-columns:1fr}
     .grid3{grid-template-columns:1fr}
     .grid5{grid-template-columns:1fr}
     .grid5 .card:last-child{grid-column:auto}
+    .steps{grid-template-columns:1fr 1fr}
     section{padding:60px 0}
   }
   @media (max-width:560px){
     .stats-in{grid-template-columns:1fr 1fr;gap:18px}
+    .steps{grid-template-columns:1fr}
+    .stat{border-left:0;padding-left:0}
   }
 </style>
 </head>
 <body>
 <nav>
   <div class="nav-in">
-    <a class="logo" href="#top">FOCUSED<span>-ON</span> CONSTRUCTION</a>
+    <a class="logo" href="focused-on-construction.html">FOCUSED<span>-ON</span></a>
     <div class="nav-links">
       <a href="focused-on-construction.html">Home</a>
       <a href="about.html">Company</a>
@@ -141,6 +211,7 @@
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
     </div>
+    <a class="nav-cta" href="contact.html">Request dossier &rarr;</a>
   </div>
 </nav>
 
@@ -149,12 +220,12 @@
     <source src="assets-foc/hero-video.mp4" type="video/mp4">
   </video>
   <div class="hero-in">
-    <div class="kicker">Est. 1978 &middot; United Kingdom</div>
-    <h1>Focused-on Construction<br>Private Limited</h1>
-    <p class="lead">Building Britain&rsquo;s infrastructure for over four decades — major road and bridge crossings, water supply systems, and high-rise landmarks, delivered end to end.</p>
+    <div class="hero-meta"><span>Est. 1978</span><span>Hinckley, United Kingdom</span></div>
+    <h1>One firm.<br><span class="serif">One standard.</span></h1>
+    <p class="lead">Focused-on Construction Private Limited — building Britain&rsquo;s infrastructure for over four decades: major road and bridge crossings, water supply systems, and high-rise landmarks, delivered end to end.</p>
     <div class="hero-cta">
-      <a class="btn btn-amber" href="projects.html">View our projects</a>
-      <a class="btn btn-ghost" href="#build">Watch a tower rise</a>
+      <a class="btn btn-amber" href="projects.html">View projects &rarr;</a>
+      <a class="btn btn-ghost" href="#day">Read the day &darr;</a>
     </div>
     <div class="badges">
       <span class="badge">Established 1978</span>
@@ -165,27 +236,40 @@
   </div>
 </header>
 
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Queensferry Crossing<b>&#10022;</b>Humber Bridge<b>&#10022;</b>Tower Bridge<b>&#10022;</b>Prince of Wales Bridge<b>&#10022;</b>Dartford Crossing<b>&#10022;</b>Est. 1978<b>&#10022;</b>Roads &middot; Bridges &middot; Water &middot; High-Rise<b>&#10022;</b></span><span>Queensferry Crossing<b>&#10022;</b>Humber Bridge<b>&#10022;</b>Tower Bridge<b>&#10022;</b>Prince of Wales Bridge<b>&#10022;</b>Dartford Crossing<b>&#10022;</b>Est. 1978<b>&#10022;</b>Roads &middot; Bridges &middot; Water &middot; High-Rise<b>&#10022;</b></span>
+  </div>
+</div>
+
+<section class="statement">
+  <div class="wrap">
+    <div class="sec-num reveal">01 &mdash; The practice</div>
+    <p class="reveal" style="margin-top:14px">We deliver UK roads, bridges and water infrastructure the way a publisher treats a book: <span class="it">one firm, one standard</span> — engineered to the last window reveal, then placed with the people who will use it every day.</p>
+  </div>
+</section>
+
 <div class="stats">
   <div class="stats-in">
+    <div class="stat"><b><span class="count" data-target="1978" data-prefix="" data-suffix="">0</span></b><span>Established</span></div>
     <div class="stat"><b><span class="count" data-target="20" data-prefix="$" data-suffix="M">0</span></b><span>Annual turnover</span></div>
     <div class="stat"><b><span class="count" data-target="45.65" data-prefix="$" data-suffix="M" data-decimals="2">0</span></b><span>Ongoing projects</span></div>
     <div class="stat"><b><span class="count" data-target="100" data-prefix="$" data-suffix="M+">0</span></b><span>Completed projects</span></div>
-    <div class="stat"><b><span class="count" data-target="48" data-suffix="">0</span></b><span>Years of building</span></div>
   </div>
 </div>
 
 <section id="about">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">The company</div>
-      <h2>Four decades of infrastructure that carries the country.</h2>
+      <div class="sec-num">02 &mdash; The company</div>
+      <h2 style="margin-top:12px">Four decades of infrastructure that <span class="it">carries the country.</span></h2>
     </div>
     <div class="about-grid">
       <div class="reveal">
         <p>Focused-on Construction Private Limited has delivered major infrastructure and construction projects across the United Kingdom since 1978 — from road bridges and water supply systems to high-rise and multi-storey buildings.</p>
         <p>Our portfolio spans major road and bridge infrastructure, water supply developments, and large-scale building projects. We take projects from groundwork to handover, with our own engineers, plant and delivery teams on site at every stage.</p>
         <p>As a partnership firm and a registered member of the Chamber of Commerce since 1978, we build long-term — with clients, with communities, and with the structures themselves.</p>
-        <img src="assets-foc/about.jpg" alt="Engineers reviewing construction drawings" style="border-radius:14px;margin-top:10px" loading="lazy">
+        <img src="assets-foc/about.jpg" alt="Engineers reviewing construction drawings" style="border-radius:10px;margin-top:10px" loading="lazy">
       </div>
       <div class="profile reveal">
         <h3>Company profile</h3>
@@ -205,11 +289,11 @@
   </div>
 </section>
 
-<section class="tight" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<section class="tight" style="background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">What we do</div>
-      <h2>Three disciplines, one standard.</h2>
+      <div class="sec-num">03 &mdash; What we do</div>
+      <h2 style="margin-top:12px">Three disciplines, <span class="it">one standard.</span></h2>
     </div>
     <div class="grid3">
       <article class="card reveal">
@@ -243,8 +327,8 @@
 <section id="projects">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">Selected work</div>
-      <h2>Five major UK road &amp; bridge infrastructure projects.</h2>
+      <div class="sec-num">04 &mdash; Selected work</div>
+      <h2 style="margin-top:12px">Five major UK road &amp; bridge <span class="it">infrastructure projects.</span></h2>
       <p class="lead">Landmark crossings and highways from across the United Kingdom — the scale and complexity our teams are built for.</p>
     </div>
     <div class="grid5">
@@ -316,11 +400,45 @@
   </div>
 </div>
 
+<section class="dark" id="day">
+  <div class="wrap">
+    <div class="day-grid">
+      <div class="reveal">
+        <div class="sec-num">05 &mdash; Interactive &middot; Read the day</div>
+        <h2 style="margin-top:12px;color:#fff">Read the day <span class="it">before you build.</span></h2>
+        <p class="lead">Drag the slider and watch the site move through the day — morning light on the frame, midday clarity, afternoon heat, evening shutdown. Every phase changes how a site works, so we plan for all four.</p>
+        <div class="day-readout">
+          <div class="day-phase" id="dayPhase">Midday</div>
+          <div class="day-time" id="dayTime">12:00 &middot; Full light, full crew</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="day-visual">
+          <img src="assets-foc/highrise.jpg" alt="High-rise building through the day">
+          <div class="day-tint morning" id="tintMorning"></div>
+          <div class="day-tint afternoon" id="tintAfternoon"></div>
+          <div class="day-tint evening" id="tintEvening"></div>
+        </div>
+        <div class="day-path">
+          <svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 2 38 Q 50 -28 98 38" fill="none" stroke="rgba(240,233,223,.35)" stroke-width="1" stroke-dasharray="3 3"/>
+          </svg>
+          <div class="day-sun" id="daySun" style="left:50%;bottom:74%"></div>
+        </div>
+        <div class="day-ticks"><span>06:00</span><span>12:00</span><span>17:00</span><span>21:00</span></div>
+        <input class="day-range" type="range" id="dayRange" min="0" max="100" value="50" aria-label="Time of day">
+        <p class="day-note">Drag the slider — the sun, the light and the site ease into each new phase over two seconds.</p>
+        <noscript><p class="day-note">Shown at midday: full light, full crew.</p></noscript>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="road">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">Interactive &middot; Drag the slider</div>
-      <h2>From unfinished ground to finished road.</h2>
+      <div class="sec-num">06 &mdash; Interactive &middot; Drag the slider</div>
+      <h2 style="margin-top:12px">From unfinished ground to <span class="it">finished road.</span></h2>
       <p class="lead">Drag the handle left or right. The completed road is revealed on one side and the unfinished road on the other — aligned in the same frame, so you watch the road transform in place.</p>
     </div>
     <div class="compare reveal" id="compare">
@@ -335,12 +453,79 @@
   </div>
 </section>
 
+<section class="tight">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">07 &mdash; How a tower gets built</div>
+      <h2 style="margin-top:12px">Four stages, <span class="it">one standard.</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><b>01</b><h3>Foundation &amp; Groundwork</h3><p>Piling, excavation and the concrete core take shape. Every tower we build starts exactly here.</p></div>
+      <div class="step reveal"><b>02</b><h3>Steel &amp; Concrete Frame</h3><p>Floor by floor, the skeleton of the tower rises — columns, cores and decks going up on programme.</p></div>
+      <div class="step reveal"><b>03</b><h3>Floors, Workers &amp; Fit-Out</h3><p>Crews work every deck as the building climbs — structure, services and facades moving together.</p></div>
+      <div class="step reveal"><b>04</b><h3>The Completed Tower</h3><p>Glass, cladding and handover. A landmark delivered, ready for the people who will use it every day.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="reveal">One standard, from the first pile to the final handover.</p>
+    <small class="reveal">Roads &middot; Bridges &middot; Water &middot; High-Rise &mdash; No shortcuts. No second standard.</small>
+  </div>
+</section>
+
+<section id="dossier">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">08 &mdash; Request the dossier</div>
+      <h2 style="margin-top:12px">Find the build <span class="it">written for you.</span></h2>
+      <p class="lead">Tell us about the crossing, the network, or the tower — and we will come back with a delivery plan. This prepares your enquiry to copy; nothing is sent from this page.</p>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="profile">
+          <h3>Contact details</h3>
+          <table>
+            <tr><td>Contact person</td><td><b>[To be provided after demo]</b></td></tr>
+            <tr><td>Email address</td><td><b>[To be provided after demo]</b></td></tr>
+            <tr><td>Registered address</td><td><b>25 Station Road, Hinckley, LE00 47AP, United Kingdom</b></td></tr>
+            <tr><td>Company registration no.</td><td><b>4687208-5</b></td></tr>
+          </table>
+          <p style="font-size:14px;color:var(--muted);margin-top:14px">Full contact details will be added after the demo review.</p>
+        </div>
+      </div>
+      <form class="form reveal" id="dossierForm" onsubmit="return false">
+        <label for="dName">Your name</label>
+        <input id="dName" type="text" placeholder="Your full name">
+        <label for="dCompany">Company</label>
+        <input id="dCompany" type="text" placeholder="Your company">
+        <label for="dType">Project type</label>
+        <select id="dType">
+          <option>Road &amp; bridge infrastructure</option>
+          <option>Water supply infrastructure</option>
+          <option>High-rise &amp; multi-storey</option>
+          <option>Other large-scale build</option>
+        </select>
+        <label for="dMsg">About the project</label>
+        <textarea id="dMsg" placeholder="Location, scope, programme — anything that helps us plan."></textarea>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+          <button class="btn btn-amber" type="button" id="dossierBtn" style="border:0;cursor:pointer;font:inherit">Prepare enquiry</button>
+          <button class="btn btn-dark" type="button" id="dossierCopy" style="border:0;cursor:pointer;font:inherit">Copy enquiry</button>
+        </div>
+        <div class="enquiry-out" id="dossierOut"></div>
+        <p style="font-size:14px;color:var(--muted);margin-top:12px">This page has no inbox behind it: preparing an enquiry simply formats your text so you can copy it. Full contact details will be added after the demo review.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
       <div class="reveal">
         <div class="kicker">Start a project</div>
-        <h2 style="margin:10px 0 12px">Have a crossing, a network or a tower to build?</h2>
+        <h2 style="margin:10px 0 12px;color:#fff">Have a crossing, a network or a tower to build?</h2>
         <p>Talk to Focused-on Construction about your next infrastructure project. Send your drawings, programme and site details, and we will come back with a delivery plan.</p>
         <div style="margin-top:26px"><a class="btn btn-amber" href="contact.html">Request a consultation</a></div>
       </div>
@@ -355,8 +540,9 @@
 </section>
 
 <footer>
+  <div class="foot-giant"><div>FOCUSED<span>-ON</span></div></div>
   <div class="foot-in">
-    <span>&copy; 2026 Focused-on Construction Private Limited. All rights reserved.</span>
+    <span>&copy; 2026 Focused-on Construction Private Limited &middot; 25 Station Road, Hinckley, LE00 47AP, UK &middot; Reg. 4687208-5 &middot; Contact: [To be provided after demo]</span>
     <span><a href="focused-on-construction.html">Home</a> &middot; <a href="about.html">Company</a> &middot; <a href="projects.html">Projects</a> &middot; <a href="contact.html">Contact</a> &middot; Demo concept by Noirframe Studio &middot; Photography is illustrative.</span>
   </div>
 </footer>
@@ -454,7 +640,57 @@
   window.addEventListener("resize", onScroll);
   updateStages();
 
-  /* ---------- before / after road slider ---------- */
+  /* ---------- READ THE DAY: day-phase slider (2s eased transitions) ---------- */
+  var dayRange = document.getElementById("dayRange");
+  var daySun = document.getElementById("daySun");
+  var dayPhase = document.getElementById("dayPhase");
+  var dayTime = document.getElementById("dayTime");
+  var tintM = document.getElementById("tintMorning");
+  var tintA = document.getElementById("tintAfternoon");
+  var tintE = document.getElementById("tintEvening");
+  var phaseTimer = null;
+  function fmtTime(mins) {
+    var h = Math.floor(mins / 60), m = Math.round(mins % 60);
+    if (m === 60) { h += 1; m = 0; }
+    return (h < 10 ? "0" + h : "" + h) + ":" + (m < 10 ? "0" + m : "" + m);
+  }
+  function setDay(v) {
+    var t = Math.min(Math.max(parseFloat(v) || 0, 0), 100) / 100;
+    /* sun along the arc: left 8%->92%, height peaks at midday */
+    var left = 8 + t * 84;
+    var bottom = 8 + 66 * Math.sin(Math.PI * t);
+    daySun.style.left = left.toFixed(1) + "%";
+    daySun.style.bottom = bottom.toFixed(1) + "%";
+    /* tints cross-fade over 2s via CSS */
+    tintM.classList.toggle("on", t < 0.25);
+    tintA.classList.toggle("on", t >= 0.5 && t < 0.75);
+    tintE.classList.toggle("on", t >= 0.75);
+    /* phase + clock: 360..1260 minutes (06:00..21:00) */
+    var mins = 360 + t * 900;
+    var phase, note;
+    if (t < 0.25) { phase = "Morning"; note = "First light, first crews on site"; }
+    else if (t < 0.5) { phase = "Midday"; note = "Full light, full crew"; }
+    else if (t < 0.75) { phase = "Afternoon"; note = "Heat, dust and heavy lifts"; }
+    else { phase = "Evening"; note = "Shutdown, securing the site"; }
+    var label = fmtTime(mins) + " \u00b7 " + note;
+    if (dayPhase.textContent !== phase) {
+      dayPhase.style.opacity = "0";
+      dayTime.style.opacity = "0";
+      if (phaseTimer) clearTimeout(phaseTimer);
+      phaseTimer = setTimeout(function () {
+        dayPhase.textContent = phase;
+        dayTime.textContent = label;
+        dayPhase.style.opacity = "1";
+        dayTime.style.opacity = "1";
+      }, 300);
+    } else {
+      dayTime.textContent = label;
+    }
+  }
+  dayRange.addEventListener("input", function () { setDay(dayRange.value); });
+  setDay(dayRange.value);
+
+  /* ---------- before / after road slider — DIRECT drag, no transition ---------- */
   var range = document.getElementById("compareRange");
   var afterImg = document.getElementById("afterImg");
   var handle = document.getElementById("handle");
@@ -465,6 +701,42 @@
   }
   range.addEventListener("input", function () { setCompare(range.value); });
   setCompare(range.value);
+
+  /* ---------- dossier form: prepare + copy, nothing is sent ---------- */
+  var dBtn = document.getElementById("dossierBtn");
+  var dCopy = document.getElementById("dossierCopy");
+  var dOut = document.getElementById("dossierOut");
+  function buildEnquiry() {
+    var name = document.getElementById("dName").value.trim();
+    var comp = document.getElementById("dCompany").value.trim();
+    var type = document.getElementById("dType").value;
+    var msg = document.getElementById("dMsg").value.trim();
+    return "Project enquiry — Focused-on Construction Private Limited\n" +
+      "Name: " + (name || "(not given)") + "\n" +
+      "Company: " + (comp || "(not given)") + "\n" +
+      "Project type: " + type + "\n" +
+      "About the project: " + (msg || "(not given)") + "\n" +
+      "Contact: [To be provided after demo]";
+  }
+  dBtn.addEventListener("click", function () {
+    dOut.textContent = buildEnquiry();
+    dOut.classList.add("show");
+  });
+  dCopy.addEventListener("click", function () {
+    dOut.textContent = buildEnquiry();
+    dOut.classList.add("show");
+    var ta = document.createElement("textarea");
+    ta.value = dOut.textContent;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } catch (e) { /* clipboard fallback below */ }
+    document.body.removeChild(ta);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(dOut.textContent).catch(function () {});
+    }
+    dCopy.textContent = "Copied!";
+    setTimeout(function () { dCopy.textContent = "Copy enquiry"; }, 2000);
+  });
 })();
 </script>
 </body>
