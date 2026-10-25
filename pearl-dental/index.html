@@ -77,7 +77,21 @@
 
   /* treatments */
   .t-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
-  .t-card { background:#fff; border:1px solid #e2e8e4; border-radius:20px; padding:22px; min-height:190px; position:relative; }
+  .t-card { background:#fff; border:1px solid #e2e8e4; border-radius:20px; padding:22px; min-height:190px; position:relative;
+    overflow:hidden; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+  .t-card::before { content:""; position:absolute; width:170%; aspect-ratio:1; border-radius:50%; background:#14532d;
+    right:-85%; bottom:-85%; transform:scale(0); transform-origin:bottom right;
+    transition:transform .55s cubic-bezier(.22,1,.36,1); z-index:0; }
+  .t-card:hover::before, .t-card:focus-visible::before { transform:scale(1); }
+  .t-card > * { position:relative; z-index:1; transition:color .3s, border-color .3s, background .3s; }
+  .t-card:hover h3, .t-card:focus-visible h3 { color:#fff; }
+  .t-card:hover p, .t-card:focus-visible p { color:#c8ddd2; }
+  .t-card:hover .from, .t-card:focus-visible .from { color:#8fd8a8; }
+  .t-card:hover .ic, .t-card:focus-visible .ic { color:#8fd8a8; }
+  .t-card:hover .go-arrow, .t-card:focus-visible .go-arrow { border-color:#8fd8a8; color:#fff; }
+  .t-card:focus-visible { outline:2px solid #1d4ed8; outline-offset:2px; }
+  .t-card.selected { border-color:#1d4ed8; box-shadow:0 0 0 2px #1d4ed8; }
+  .t-card.selected .go-arrow { background:#1d4ed8; color:#fff; border-color:#1d4ed8; }
   .t-card .from { position:absolute; top:20px; right:20px; font-size:12px; font-weight:700; color:#5a6e64; }
   .t-card h3 { font-size:21px; font-weight:800; margin:26px 0 8px; }
   .t-card p { font-size:14px; line-height:1.55; color:#5a6e64; max-width:260px; }
@@ -143,6 +157,9 @@
   .book p { font-size:15px; line-height:1.6; color:#2c4238; max-width:380px; margin-top:12px; }
   .picker { background:#fff; border-radius:20px; padding:22px; }
   .picker .lbl { font-size:11px; font-weight:800; letter-spacing:.1em; color:#5a6e64; margin-bottom:10px; }
+  .picker .picked { background:#f2f8f3; border:1px dashed #c8d8cf; border-radius:12px; padding:11px 14px;
+    font-size:14px; font-weight:600; margin-bottom:4px; }
+  .picker .picked b { color:#1d4ed8; }
   .days { display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-bottom:18px; }
   .days button { border:1px solid #e2e8e4; background:#f7faf8; border-radius:12px; padding:10px 4px; cursor:pointer; font-weight:700; }
   .days button small { display:block; font-weight:500; color:#5a6e64; font-size:11px; }
@@ -240,12 +257,12 @@
       <p class="sec-sub">Transparent prices, no upsell. Every plan starts with a 3D scan you can keep.</p>
     </div>
     <div class="t-grid">
-      <article class="t-card"><span class="from">From $299</span><div class="ic">✦</div><h3>Whitening</h3><p>In-chair LED whitening, up to eight shades brighter in a single hour.</p><span class="go-arrow">→</span></article>
-      <article class="t-card"><span class="from">From $2,400</span><div class="ic">◐</div><h3>Clear aligners</h3><p>Invisible trays planned on your 3D scan, with check-ins from your phone.</p><span class="go-arrow">→</span></article>
-      <article class="t-card"><span class="from">From $1,350</span><div class="ic">⬢</div><h3>Implants</h3><p>Titanium roots and porcelain crowns that look, feel and chew like your own.</p><span class="go-arrow">→</span></article>
-      <article class="t-card"><span class="from">From $750</span><div class="ic">▭</div><h3>Veneers</h3><p>Hand-layered porcelain shells, shaded and shaped with you in the chair.</p><span class="go-arrow">→</span></article>
-      <article class="t-card"><span class="from">From $95</span><div class="ic">✓</div><h3>Check-ups</h3><p>Forty unhurried minutes: scan, clean, polish and a plan in plain words.</p><span class="go-arrow">→</span></article>
-      <article class="t-card"><span class="from">24 / 7</span><div class="ic">✚</div><h3>Emergency</h3><p>A dentist on call every night. Same-day slots held back for pain.</p><span class="go-arrow">→</span></article>
+      <article class="t-card" data-treatment="Whitening" data-price="From $299" tabindex="0" role="button" aria-label="Book Whitening"><span class="from">From $299</span><div class="ic">✦</div><h3>Whitening</h3><p>In-chair LED whitening, up to eight shades brighter in a single hour.</p><span class="go-arrow">→</span></article>
+      <article class="t-card" data-treatment="Clear aligners" data-price="From $2,400" tabindex="0" role="button" aria-label="Book Clear aligners"><span class="from">From $2,400</span><div class="ic">◐</div><h3>Clear aligners</h3><p>Invisible trays planned on your 3D scan, with check-ins from your phone.</p><span class="go-arrow">→</span></article>
+      <article class="t-card" data-treatment="Implants" data-price="From $1,350" tabindex="0" role="button" aria-label="Book Implants"><span class="from">From $1,350</span><div class="ic">⬢</div><h3>Implants</h3><p>Titanium roots and porcelain crowns that look, feel and chew like your own.</p><span class="go-arrow">→</span></article>
+      <article class="t-card" data-treatment="Veneers" data-price="From $750" tabindex="0" role="button" aria-label="Book Veneers"><span class="from">From $750</span><div class="ic">▭</div><h3>Veneers</h3><p>Hand-layered porcelain shells, shaded and shaped with you in the chair.</p><span class="go-arrow">→</span></article>
+      <article class="t-card" data-treatment="Check-ups" data-price="From $95" tabindex="0" role="button" aria-label="Book Check-ups"><span class="from">From $95</span><div class="ic">✓</div><h3>Check-ups</h3><p>Forty unhurried minutes: scan, clean, polish and a plan in plain words.</p><span class="go-arrow">→</span></article>
+      <article class="t-card" data-treatment="Emergency" data-price="24 / 7" tabindex="0" role="button" aria-label="Book Emergency"><span class="from">24 / 7</span><div class="ic">✚</div><h3>Emergency</h3><p>A dentist on call every night. Same-day slots held back for pain.</p><span class="go-arrow">→</span></article>
     </div>
 
     <!-- VISIT -->
@@ -341,7 +358,9 @@
         <p>First scan is free. Pick a day and a time — we'll text a reminder and a parking spot.</p>
       </div>
       <div class="picker">
-        <div class="lbl">CHOOSE A DAY</div>
+        <div class="lbl">TREATMENT</div>
+        <div class="picked" id="bookTreatment">No treatment selected yet — tap any treatment card above.</div>
+        <div class="lbl" style="margin-top:16px">CHOOSE A DAY</div>
         <div class="days" id="days">
           <button class="active" data-day="Tue 20"><small>TUE</small>20</button>
           <button data-day="Wed 21"><small>WED</small>21</button>
@@ -427,6 +446,23 @@
     });
   });
 
+  // ---- Treatment cards: working buttons -> booking picker ----
+  let treatment = '';
+  const bookTreatment = document.getElementById('bookTreatment');
+  function selectTreatment(card) {
+    document.querySelectorAll('.t-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    treatment = card.dataset.treatment;
+    bookTreatment.innerHTML = '<b>' + treatment + '</b> · ' + card.dataset.price + ' — pick a day and time below.';
+    document.getElementById('book').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('.t-card').forEach(card => {
+    card.addEventListener('click', () => selectTreatment(card));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectTreatment(card); }
+    });
+  });
+
   // ---- Booking picker ----
   let day = 'Tue 20', time = '13:00';
   document.getElementById('days').addEventListener('click', e => {
@@ -452,7 +488,8 @@
   document.getElementById('holdBtn').addEventListener('click', function () {
     this.classList.add('done');
     this.innerHTML = 'Slot held ✓';
-    document.getElementById('holdNote').textContent = day + ' at ' + time + ' — held for you. First scan is free.';
+    const what = treatment ? treatment + ' · ' : '';
+    document.getElementById('holdNote').textContent = what + day + ' at ' + time + ' — held for you. First scan is free.';
   });
 
   // ---- Plan chooser ----
