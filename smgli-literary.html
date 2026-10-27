@@ -21,9 +21,15 @@
   .hero p.tag{font-style:italic;font-size:20px;margin:6px 0 26px;color:var(--cream2)}
   /* BOOKSHELF: only the individual spine moves on hover/tap. No container hover rule. */
   .shelf{display:flex;align-items:flex-end;justify-content:center;gap:3px;max-width:980px;margin:0 auto;padding:0 12px;min-height:220px}
-  .spine{flex:1 1 0;min-width:22px;max-width:44px;border-radius:3px 3px 0 0;cursor:pointer;position:relative;transition:transform .25s ease,box-shadow .25s ease;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
-  .spine span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:.06em;color:#f3ead6;padding:10px 0;white-space:nowrap;overflow:hidden}
-  .spine:hover,.spine:focus-visible,.spine.popped{transform:translateY(-24px) rotate(-2deg);box-shadow:0 18px 28px rgba(0,0,0,.55);z-index:5;outline:none}
+  .spine{flex:1 1 0;min-width:22px;max-width:44px;border-radius:3px 3px 0 0;cursor:pointer;position:relative;transition:transform .25s ease,box-shadow .25s ease;box-shadow:inset 3px 0 5px rgba(0,0,0,.45),inset -3px 0 5px rgba(0,0,0,.45),inset 0 10px 0 rgba(255,255,255,.14),inset 0 -10px 0 rgba(0,0,0,.30),0 4px 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .spine::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(255,255,255,.25),rgba(0,0,0,.35))}
+  .spine::after{content:"";position:absolute;left:6px;right:6px;top:10px;height:3px;background:rgba(255,255,255,.22);box-shadow:0 calc(100% - 22px) 0 rgba(0,0,0,.35)}
+  .spine span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:.06em;color:#f3ead6;padding:10px 0;white-space:nowrap;overflow:hidden;text-shadow:0 1px 2px rgba(0,0,0,.7);position:relative;z-index:1}
+  .spine:hover,.spine:focus-visible,.spine.popped{transform:translateY(-24px) rotate(-2deg);box-shadow:inset 3px 0 5px rgba(0,0,0,.45),inset -3px 0 5px rgba(0,0,0,.45),0 22px 30px rgba(0,0,0,.65);z-index:5;outline:none}
+  .heroCover{display:none;max-width:220px;margin:0 auto 12px;border:1px solid #5a2230;box-shadow:0 18px 30px rgba(0,0,0,.6);background:#111}
+  .heroCover.open{display:block}
+  .heroCover img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+  .heroCover figcaption{font-family:Arial,sans-serif;font-size:12px;color:var(--gold);text-align:center;padding:8px;background:#1a060b}
   .shelf-base{height:10px;background:#1a060b;max-width:1020px;margin:0 auto 8px;border-top:2px solid #5a2230}
   .hint{font-family:Arial,sans-serif;font-size:13px;font-style:italic;color:var(--gold);text-align:center;margin:14px 0 6px}
   .hero-foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1020px;margin:18px auto 0;padding:0 12px 26px;font-family:Arial,sans-serif;font-size:13px;line-height:1.6;color:var(--cream2)}
@@ -46,6 +52,9 @@
   .cover .auth{font-family:Arial,sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
   .cover .motif{font-size:72px;text-align:center;line-height:1}
   .cover .ttl{font-size:22px;line-height:1.15}
+  img.coverimg{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;box-shadow:0 14px 28px rgba(0,0,0,.35);border:1px solid #ddd0b4}
+  .card img.coverimg{transition:transform .25s ease}
+  .card img.coverimg:hover{transform:translateY(-6px) rotate(-1deg)}
   .card h3{font-size:20px;margin:14px 0 4px}.card p{margin:0 0 12px;color:var(--mut);font-family:Arial,sans-serif;font-size:13px}
   .excerpt{display:none;margin-top:12px;padding:12px;background:#fff;border-left:3px solid var(--gold);font-style:italic;line-height:1.6}
   .excerpt.open{display:block}
@@ -87,10 +96,10 @@
     <h1>Sala</h1>
     <p class="tag">A literary community, in English and Spanish.</p>
     <div class="shelf" id="shelf" aria-label="Bookshelf — hover or tap a spine">
-      <div class="spine" style="height:180px;background:#223a5e" tabindex="0" data-title="The Salt Archive"><span>The Salt Archive</span></div>
-      <div class="spine" style="height:200px;background:#7a2e2e" tabindex="0" data-title="Small Hours"><span>Small Hours</span></div>
-      <div class="spine" style="height:170px;background:#1f5f5a" tabindex="0" data-title="A Field Guide to Leaving"><span>A Field Guide to Leaving</span></div>
-      <div class="spine" style="height:210px;background:#c9a86a" tabindex="0" data-title="Northern Lanterns"><span>Northern Lanterns</span></div>
+      <div class="spine" style="height:180px;background:#223a5e" tabindex="0" data-title="The Salt Archive" data-img="assets-smgli/salt-archive.webp"><span>The Salt Archive</span></div>
+      <div class="spine" style="height:200px;background:#7a2e2e" tabindex="0" data-title="Small Hours" data-img="assets-smgli/small-hours.webp"><span>Small Hours</span></div>
+      <div class="spine" style="height:170px;background:#1f5f5a" tabindex="0" data-title="A Field Guide to Leaving" data-img="assets-smgli/field-guide.webp"><span>A Field Guide to Leaving</span></div>
+      <div class="spine" style="height:210px;background:#c9a86a" tabindex="0" data-title="Northern Lanterns" data-img="assets-smgli/northern-lanterns.webp"><span>Northern Lanterns</span></div>
       <div class="spine" style="height:185px;background:#4a2a5e" tabindex="0" data-title="Winter List"><span>Winter List</span></div>
       <div class="spine" style="height:195px;background:#2e5a3a" tabindex="0" data-title="Reading Room"><span>Reading Room</span></div>
       <div class="spine" style="height:175px;background:#8a4a2a" tabindex="0" data-title="Fellow Notes"><span>Fellow Notes</span></div>
@@ -101,7 +110,8 @@
       <div class="spine" style="height:170px;background:#1f5f5a" tabindex="0" data-title="The Retreat Book"><span>The Retreat Book</span></div>
     </div>
     <div class="shelf-base"></div>
-    <p class="hint">Hover a spine to pull it from the shelf — only that book pops up. Tap a spine on touch screens.</p>
+    <figure class="heroCover" id="heroCover"><img id="heroCoverImg" src="assets-smgli/salt-archive.webp" alt="Book cover"><figcaption id="heroCoverCap">The Salt Archive</figcaption></figure>
+    <p class="hint">Hover a spine to pull it from the shelf — only that book pops up, and its real cover appears above. Tap a spine on touch screens.</p>
     <p id="spineLabel" style="font-family:Arial,sans-serif;color:var(--gold);min-height:20px" aria-live="polite"></p>
     <div class="hero-foot">
       <p style="max-width:520px;margin:0">Books, readings and conversation — a shelf full of the ones we wish we had published, and a room full of the people who read them.</p>
@@ -126,25 +136,25 @@
   <h2>New books, <em>chosen by hand.</em></h2>
   <div class="grid">
     <article class="card">
-      <div class="cover" style="background:#223a5e"><span class="auth">Inés Varela</span><span class="motif">☾</span><span class="ttl">The Salt Archive</span></div>
+      <img class="coverimg" src="assets-smgli/salt-archive.webp" alt="Realistic book cover: The Salt Archive by Inés Varela">
       <h3>The Salt Archive</h3><p>Fiction · Inés Varela</p>
       <button class="linkbtn" data-excerpt="ex1">Read page one ↓</button>
       <div class="excerpt" id="ex1">“The sea kept its records in salt, and she had come to read them — one tide, one letter, one name at a time.” — Demo excerpt.</div>
     </article>
     <article class="card">
-      <div class="cover" style="background:#1a1a1a"><span class="auth">Tomasz Wren</span><span class="motif">∩</span><span class="ttl">Small Hours</span></div>
+      <img class="coverimg" src="assets-smgli/small-hours.webp" alt="Realistic book cover: Small Hours by Tomasz Wren">
       <h3>Small Hours</h3><p>Fiction · Tomasz Wren</p>
       <button class="linkbtn" data-excerpt="ex2">Read page one ↓</button>
       <div class="excerpt" id="ex2">“At three in the morning the house finally told the truth, in the small hours when nobody was performing.” — Demo excerpt.</div>
     </article>
     <article class="card">
-      <div class="cover" style="background:#1f5f5a"><span class="auth">Odile Marchetti</span><span class="motif">✦</span><span class="ttl">A Field Guide to Leaving</span></div>
+      <img class="coverimg" src="assets-smgli/field-guide.webp" alt="Realistic book cover: A Field Guide to Leaving by Odile Marchetti">
       <h3>A Field Guide to Leaving</h3><p>Essays · Odile Marchetti</p>
       <button class="linkbtn" data-excerpt="ex3">Read page one ↓</button>
       <div class="excerpt" id="ex3">“Leaving is a field skill, like reading weather: you learn it by going, and by coming back changed.” — Demo excerpt.</div>
     </article>
     <article class="card">
-      <div class="cover" style="background:#c9a86a;color:#241012"><span class="auth">Kofi Mensah-Hale</span><span class="motif">N</span><span class="ttl">Northern Lanterns</span></div>
+      <img class="coverimg" src="assets-smgli/northern-lanterns.webp" alt="Realistic book cover: Northern Lanterns by Kofi Mensah-Hale">
       <h3>Northern Lanterns</h3><p>Poetry · Kofi Mensah-Hale</p>
       <button class="linkbtn" data-excerpt="ex4">Read page one ↓</button>
       <div class="excerpt" id="ex4">“In the north, light does not arrive all at once. It gathers, lantern by lantern, until the dark has somewhere to go.” — Demo excerpt.</div>
@@ -158,13 +168,13 @@
   <p class="lead">Hover, focus, or tap a book name below. Only that book's cover appears in the panel on the right.</p>
   <div class="listwrap">
     <div id="bookList">
-      <button class="row active" data-cover="#223a5e" data-motif="☾" data-title="The Salt Archive" data-author="Inés Varela · Fiction"><b>The Salt Archive</b><span>Inés Varela · Fiction · A novel of tides and letters</span></button>
-      <button class="row" data-cover="#1a1a1a" data-motif="∩" data-title="Small Hours" data-author="Tomasz Wren · Fiction"><b>Small Hours</b><span>Tomasz Wren · Fiction · A novel told after midnight</span></button>
-      <button class="row" data-cover="#1f5f5a" data-motif="✦" data-title="A Field Guide to Leaving" data-author="Odile Marchetti · Essays"><b>A Field Guide to Leaving</b><span>Odile Marchetti · Essays · On going, and coming back</span></button>
-      <button class="row" data-cover="#c9a86a" data-motif="N" data-title="Northern Lanterns" data-author="Kofi Mensah-Hale · Poetry"><b>Northern Lanterns</b><span>Kofi Mensah-Hale · Poetry · Light, gathered slowly</span></button>
+      <button class="row active" data-img="assets-smgli/salt-archive.webp" data-title="The Salt Archive" data-author="Inés Varela · Fiction"><b>The Salt Archive</b><span>Inés Varela · Fiction · A novel of tides and letters</span></button>
+      <button class="row" data-img="assets-smgli/small-hours.webp" data-title="Small Hours" data-author="Tomasz Wren · Fiction"><b>Small Hours</b><span>Tomasz Wren · Fiction · A novel told after midnight</span></button>
+      <button class="row" data-img="assets-smgli/field-guide.webp" data-title="A Field Guide to Leaving" data-author="Odile Marchetti · Essays"><b>A Field Guide to Leaving</b><span>Odile Marchetti · Essays · On going, and coming back</span></button>
+      <button class="row" data-img="assets-smgli/northern-lanterns.webp" data-title="Northern Lanterns" data-author="Kofi Mensah-Hale · Poetry"><b>Northern Lanterns</b><span>Kofi Mensah-Hale · Poetry · Light, gathered slowly</span></button>
     </div>
     <div class="preview" aria-live="polite">
-      <div class="cover" id="previewCover" style="background:#223a5e"><span class="auth" id="previewAuthor">Inés Varela</span><span class="motif" id="previewMotif">☾</span><span class="ttl" id="previewTitle">The Salt Archive</span></div>
+      <img class="coverimg" id="previewImg" src="assets-smgli/salt-archive.webp" alt="Book cover: The Salt Archive">
       <h3 id="previewName">The Salt Archive</h3><p id="previewDetail">Inés Varela · Fiction</p>
     </div>
   </div>
@@ -209,26 +219,23 @@
 </footer>
 
 <script>
-  // Hero spines: tap/click also pops only that spine.
+  // Hero spines: tap/click also pops only that spine, and shows its real cover if it has one.
   var label=document.getElementById('spineLabel');
+  var heroCover=document.getElementById('heroCover'),heroImg=document.getElementById('heroCoverImg'),heroCap=document.getElementById('heroCoverCap');
   document.querySelectorAll('.spine').forEach(function(s){
-    function pop(){document.querySelectorAll('.spine').forEach(function(o){o.classList.remove('popped')});s.classList.add('popped');label.textContent=s.getAttribute('data-title');}
+    function pop(){document.querySelectorAll('.spine').forEach(function(o){o.classList.remove('popped')});s.classList.add('popped');label.textContent=s.getAttribute('data-title');if(s.getAttribute('data-img')){heroImg.src=s.getAttribute('data-img');heroImg.alt='Book cover: '+s.getAttribute('data-title');heroCap.textContent=s.getAttribute('data-title');heroCover.classList.add('open');}}
     s.addEventListener('click',pop);
-    s.addEventListener('mouseenter',function(){label.textContent=s.getAttribute('data-title')});
-    s.addEventListener('focus',function(){label.textContent=s.getAttribute('data-title')});
+    s.addEventListener('mouseenter',function(){label.textContent=s.getAttribute('data-title');if(s.getAttribute('data-img')){heroImg.src=s.getAttribute('data-img');heroImg.alt='Book cover: '+s.getAttribute('data-title');heroCap.textContent=s.getAttribute('data-title');heroCover.classList.add('open');}});
+    s.addEventListener('focus',function(){label.textContent=s.getAttribute('data-title');if(s.getAttribute('data-img')){heroImg.src=s.getAttribute('data-img');heroCap.textContent=s.getAttribute('data-title');heroCover.classList.add('open');}});
   });
-  // Member-books preview: only the hovered/focused/tapped row's cover shows.
-  var cover=document.getElementById('previewCover'),motif=document.getElementById('previewMotif'),
-      ttl=document.getElementById('previewTitle'),auth=document.getElementById('previewAuthor'),
+  // Member-books preview: only the hovered/focused/tapped row's real cover photo shows.
+  var previewImg=document.getElementById('previewImg'),
       nm=document.getElementById('previewName'),det=document.getElementById('previewDetail');
   function show(row){
     document.querySelectorAll('#bookList .row').forEach(function(r){r.classList.remove('active')});
     row.classList.add('active');
-    cover.style.background=row.getAttribute('data-cover');
-    cover.style.color=row.getAttribute('data-cover')==='#c9a86a' ? '#241012' : '#f3ead6';
-    motif.textContent=row.getAttribute('data-motif');
-    ttl.textContent=row.getAttribute('data-title');
-    auth.textContent=row.getAttribute('data-author').split(' · ')[0];
+    previewImg.src=row.getAttribute('data-img');
+    previewImg.alt='Book cover: '+row.getAttribute('data-title');
     nm.textContent=row.getAttribute('data-title');
     det.textContent=row.getAttribute('data-author');
   }
