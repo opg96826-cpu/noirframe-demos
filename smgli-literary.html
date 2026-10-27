@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMGLI — San Miguel Literary Sala | Demo Concept</title>
+<style>
+  :root{--burg:#2b0a12;--burg2:#3d0f1a;--cream:#f3ead6;--cream2:#e9dcc0;--gold:#c9a86a;--ink:#241012;--mut:#7a6a5e}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+  a{color:inherit}
+  .demo{position:sticky;top:0;z-index:50;background:#111;color:#fff;text-align:center;padding:9px 12px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  header{background:var(--burg);color:var(--cream);padding:18px 5vw 0;position:relative;overflow:hidden}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-size:26px;letter-spacing:.04em}.brand small{display:block;font-family:Arial,sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+  nav{display:flex;gap:18px;flex-wrap:wrap;font-family:Arial,sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  nav a{text-decoration:none;color:var(--cream)} nav a:hover{color:var(--gold)}
+  .hero{padding:34px 0 10px;text-align:center;position:relative}
+  .hero h1{font-size:clamp(120px,28vw,320px);line-height:.8;margin:0;color:var(--cream);font-weight:400;letter-spacing:-.04em}
+  .hero p.tag{font-style:italic;font-size:20px;margin:6px 0 26px;color:var(--cream2)}
+  /* BOOKSHELF: only the individual spine moves on hover/tap. No container hover rule. */
+  .shelf{display:flex;align-items:flex-end;justify-content:center;gap:3px;max-width:980px;margin:0 auto;padding:0 12px;min-height:220px}
+  .spine{flex:1 1 0;min-width:22px;max-width:44px;border-radius:3px 3px 0 0;cursor:pointer;position:relative;transition:transform .25s ease,box-shadow .25s ease;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+  .spine span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:.06em;color:#f3ead6;padding:10px 0;white-space:nowrap;overflow:hidden}
+  .spine:hover,.spine:focus-visible,.spine.popped{transform:translateY(-24px) rotate(-2deg);box-shadow:0 18px 28px rgba(0,0,0,.55);z-index:5;outline:none}
+  .shelf-base{height:10px;background:#1a060b;max-width:1020px;margin:0 auto 8px;border-top:2px solid #5a2230}
+  .hint{font-family:Arial,sans-serif;font-size:13px;font-style:italic;color:var(--gold);text-align:center;margin:14px 0 6px}
+  .hero-foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1020px;margin:18px auto 0;padding:0 12px 26px;font-family:Arial,sans-serif;font-size:13px;line-height:1.6;color:var(--cream2)}
+  .btn{display:inline-block;background:var(--gold);color:#241012;border:0;border-radius:100px;padding:12px 22px;font-family:Arial,sans-serif;font-weight:700;cursor:pointer;text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--cream);border:1px solid var(--gold)}
+  .btn.dark{background:var(--burg);color:var(--cream)}
+  section{padding:56px 5vw;max-width:1100px;margin:0 auto}
+  .kicker{font-family:Arial,sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#8a6d3b}
+  h2{font-size:clamp(34px,5vw,58px);line-height:1.05;font-weight:400;margin:10px 0 16px}
+  h2 em{font-style:italic}
+  p.lead{font-size:18px;line-height:1.7;max-width:720px}
+  .stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:28px}
+  .stat{flex:1;min-width:150px;border-top:1px solid #c9bfa8;padding-top:14px}
+  .stat b{font-size:42px;font-weight:400;display:block}.stat span{font-family:Arial,sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+  .dark{background:var(--burg);color:var(--cream);max-width:none}
+  .dark .kicker{color:var(--gold)} .dark p.lead{color:var(--cream2)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:26px}
+  .card{background:#fff8e8;border:1px solid #ddd0b4;padding:16px}
+  .cover{aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:space-between;padding:16px;color:#f3ead6;font-family:Georgia,serif}
+  .cover .auth{font-family:Arial,sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+  .cover .motif{font-size:72px;text-align:center;line-height:1}
+  .cover .ttl{font-size:22px;line-height:1.15}
+  .card h3{font-size:20px;margin:14px 0 4px}.card p{margin:0 0 12px;color:var(--mut);font-family:Arial,sans-serif;font-size:13px}
+  .excerpt{display:none;margin-top:12px;padding:12px;background:#fff;border-left:3px solid var(--gold);font-style:italic;line-height:1.6}
+  .excerpt.open{display:block}
+  .linkbtn{background:none;border:0;border-bottom:1px solid var(--gold);font-family:Arial,sans-serif;font-weight:700;cursor:pointer;padding:0 0 2px}
+  /* MEMBER BOOKS LIST + PREVIEW: preview shows only the active book. */
+  .listwrap{display:grid;grid-template-columns:1fr 320px;gap:28px;margin-top:26px;align-items:start}
+  .row{width:100%;text-align:left;background:transparent;border:0;border-top:1px solid #ddd0b4;padding:18px 8px;cursor:pointer;font-family:Georgia,serif}
+  .row:last-child{border-bottom:1px solid #ddd0b4}
+  .row:hover,.row:focus-visible,.row.active{background:#fff8e8;outline:none}
+  .row b{font-size:22px;font-weight:400}.row span{display:block;font-family:Arial,sans-serif;font-size:13px;color:var(--mut);margin-top:4px}
+  .preview{position:sticky;top:60px;border:1px solid #ddd0b4;background:#fff8e8;padding:18px}
+  .preview .cover{aspect-ratio:3/4}
+  .preview h3{margin:14px 0 4px}.preview p{margin:0;color:var(--mut);font-family:Arial,sans-serif;font-size:13px}
+  .ev{display:grid;grid-template-columns:80px 1fr auto auto;gap:18px;align-items:center;border-top:1px solid #ddd0b4;padding:18px 8px}
+  .ev:last-child{border-bottom:1px solid #ddd0b4}
+  .ev .num{font-size:34px}.ev .when{font-family:Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+  .ev h3{margin:0;font-weight:400;font-size:22px}.ev p{margin:4px 0 0;color:var(--mut);font-family:Arial,sans-serif;font-size:13px}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .tier{background:var(--burg2);color:var(--cream);padding:26px;border:1px solid #5a2230}
+  .tier h3{font-size:26px;font-weight:400;margin:0 0 10px}.tier p{color:var(--cream2);line-height:1.65}
+  .letter{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+  .letter input{flex:1;min-width:220px;padding:13px;border:1px solid #c9bfa8;background:#fff;font-size:15px}
+  .msg{display:none;margin-top:14px;font-family:Arial,sans-serif;color:#2e6b34}.msg.open{display:block}
+  footer{background:#1a060b;color:var(--cream2);padding:36px 5vw;font-family:Arial,sans-serif;font-size:13px;line-height:1.7}
+  footer a{color:var(--gold)}
+  @media(max-width:800px){.grid{grid-template-columns:1fr 1fr}.listwrap{grid-template-columns:1fr}.preview{position:static}.tiers{grid-template-columns:1fr}.ev{grid-template-columns:1fr}.shelf{min-height:170px}.spine span{font-size:9px}}
+</style>
+</head>
+<body>
+<div class="demo">Demo Concept — not SMGLI's live site</div>
+<header>
+  <div class="top">
+    <div class="brand">SMGLI<small>San Miguel Literary Sala · Literary community · English + Spanish</small></div>
+    <nav>
+      <a href="#new">New books</a><a href="#members">Member books</a><a href="#events">Events</a><a href="#membership">Membership</a><a href="#visit">Visit</a>
+    </nav>
+  </div>
+  <div class="hero">
+    <h1>Sala</h1>
+    <p class="tag">A literary community, in English and Spanish.</p>
+    <div class="shelf" id="shelf" aria-label="Bookshelf — hover or tap a spine">
+      <div class="spine" style="height:180px;background:#223a5e" tabindex="0" data-title="The Salt Archive"><span>The Salt Archive</span></div>
+      <div class="spine" style="height:200px;background:#7a2e2e" tabindex="0" data-title="Small Hours"><span>Small Hours</span></div>
+      <div class="spine" style="height:170px;background:#1f5f5a" tabindex="0" data-title="A Field Guide to Leaving"><span>A Field Guide to Leaving</span></div>
+      <div class="spine" style="height:210px;background:#c9a86a" tabindex="0" data-title="Northern Lanterns"><span>Northern Lanterns</span></div>
+      <div class="spine" style="height:185px;background:#4a2a5e" tabindex="0" data-title="Winter List"><span>Winter List</span></div>
+      <div class="spine" style="height:195px;background:#2e5a3a" tabindex="0" data-title="Reading Room"><span>Reading Room</span></div>
+      <div class="spine" style="height:175px;background:#8a4a2a" tabindex="0" data-title="Fellow Notes"><span>Fellow Notes</span></div>
+      <div class="spine" style="height:205px;background:#223a5e" tabindex="0" data-title="The Long Table"><span>The Long Table</span></div>
+      <div class="spine" style="height:180px;background:#5e223a" tabindex="0" data-title="After Hours"><span>After Hours</span></div>
+      <div class="spine" style="height:190px;background:#3a3a3a" tabindex="0" data-title="Member Stories"><span>Member Stories</span></div>
+      <div class="spine" style="height:200px;background:#7a2e2e" tabindex="0" data-title="Salt &amp; Paper"><span>Salt &amp; Paper</span></div>
+      <div class="spine" style="height:170px;background:#1f5f5a" tabindex="0" data-title="The Retreat Book"><span>The Retreat Book</span></div>
+    </div>
+    <div class="shelf-base"></div>
+    <p class="hint">Hover a spine to pull it from the shelf — only that book pops up. Tap a spine on touch screens.</p>
+    <p id="spineLabel" style="font-family:Arial,sans-serif;color:var(--gold);min-height:20px" aria-live="polite"></p>
+    <div class="hero-foot">
+      <p style="max-width:520px;margin:0">Books, readings and conversation — a shelf full of the ones we wish we had published, and a room full of the people who read them.</p>
+      <p style="margin:0"><a class="btn" href="#new">Browse the list →</a></p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <p class="kicker">The Sala</p>
+  <h2>We gather readers,<br><em>writers, and books.</em></h2>
+  <p class="lead">The San Miguel Literary Sala is a community of readers and writers. Members share books, attend readings, and keep a living directory of member work — in English and Spanish.</p>
+  <div class="stats">
+    <div class="stat"><b>148</b><span>Members (demo figure)</span></div>
+    <div class="stat"><b>62</b><span>Authors (demo figure)</span></div>
+    <div class="stat"><b>120</b><span>Member books (demo figure)</span></div>
+  </div>
+</section>
+
+<section id="new">
+  <p class="kicker">Fresh off the press · Demo books</p>
+  <h2>New books, <em>chosen by hand.</em></h2>
+  <div class="grid">
+    <article class="card">
+      <div class="cover" style="background:#223a5e"><span class="auth">Inés Varela</span><span class="motif">☾</span><span class="ttl">The Salt Archive</span></div>
+      <h3>The Salt Archive</h3><p>Fiction · Inés Varela</p>
+      <button class="linkbtn" data-excerpt="ex1">Read page one ↓</button>
+      <div class="excerpt" id="ex1">“The sea kept its records in salt, and she had come to read them — one tide, one letter, one name at a time.” — Demo excerpt.</div>
+    </article>
+    <article class="card">
+      <div class="cover" style="background:#1a1a1a"><span class="auth">Tomasz Wren</span><span class="motif">∩</span><span class="ttl">Small Hours</span></div>
+      <h3>Small Hours</h3><p>Fiction · Tomasz Wren</p>
+      <button class="linkbtn" data-excerpt="ex2">Read page one ↓</button>
+      <div class="excerpt" id="ex2">“At three in the morning the house finally told the truth, in the small hours when nobody was performing.” — Demo excerpt.</div>
+    </article>
+    <article class="card">
+      <div class="cover" style="background:#1f5f5a"><span class="auth">Odile Marchetti</span><span class="motif">✦</span><span class="ttl">A Field Guide to Leaving</span></div>
+      <h3>A Field Guide to Leaving</h3><p>Essays · Odile Marchetti</p>
+      <button class="linkbtn" data-excerpt="ex3">Read page one ↓</button>
+      <div class="excerpt" id="ex3">“Leaving is a field skill, like reading weather: you learn it by going, and by coming back changed.” — Demo excerpt.</div>
+    </article>
+    <article class="card">
+      <div class="cover" style="background:#c9a86a;color:#241012"><span class="auth">Kofi Mensah-Hale</span><span class="motif">N</span><span class="ttl">Northern Lanterns</span></div>
+      <h3>Northern Lanterns</h3><p>Poetry · Kofi Mensah-Hale</p>
+      <button class="linkbtn" data-excerpt="ex4">Read page one ↓</button>
+      <div class="excerpt" id="ex4">“In the north, light does not arrive all at once. It gathers, lantern by lantern, until the dark has somewhere to go.” — Demo excerpt.</div>
+    </article>
+  </div>
+</section>
+
+<section id="members" class="dark" style="padding-left:5vw;padding-right:5vw">
+  <p class="kicker">Member books · Demo list</p>
+  <h2>Hover a title — <em>see its cover.</em></h2>
+  <p class="lead">Hover, focus, or tap a book name below. Only that book's cover appears in the panel on the right.</p>
+  <div class="listwrap">
+    <div id="bookList">
+      <button class="row active" data-cover="#223a5e" data-motif="☾" data-title="The Salt Archive" data-author="Inés Varela · Fiction"><b>The Salt Archive</b><span>Inés Varela · Fiction · A novel of tides and letters</span></button>
+      <button class="row" data-cover="#1a1a1a" data-motif="∩" data-title="Small Hours" data-author="Tomasz Wren · Fiction"><b>Small Hours</b><span>Tomasz Wren · Fiction · A novel told after midnight</span></button>
+      <button class="row" data-cover="#1f5f5a" data-motif="✦" data-title="A Field Guide to Leaving" data-author="Odile Marchetti · Essays"><b>A Field Guide to Leaving</b><span>Odile Marchetti · Essays · On going, and coming back</span></button>
+      <button class="row" data-cover="#c9a86a" data-motif="N" data-title="Northern Lanterns" data-author="Kofi Mensah-Hale · Poetry"><b>Northern Lanterns</b><span>Kofi Mensah-Hale · Poetry · Light, gathered slowly</span></button>
+    </div>
+    <div class="preview" aria-live="polite">
+      <div class="cover" id="previewCover" style="background:#223a5e"><span class="auth" id="previewAuthor">Inés Varela</span><span class="motif" id="previewMotif">☾</span><span class="ttl" id="previewTitle">The Salt Archive</span></div>
+      <h3 id="previewName">The Salt Archive</h3><p id="previewDetail">Inés Varela · Fiction</p>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <p class="kicker">Events</p>
+  <h2>Thursdays, <em>after hours.</em></h2>
+  <div>
+    <div class="ev"><div><div class="num">01</div><div class="when">Thu · 6 pm</div></div><div><h3>Reading club</h3><p>This month's book, open discussion, all welcome</p></div><div>Free · Drop in</div><button class="btn dark reserve">Reserve</button></div>
+    <div class="ev"><div><div class="num">02</div><div class="when">Thu · 6 pm</div></div><div><h3>Author evening</h3><p>A member author reads, then questions from the room</p></div><div>Free · Drop in</div><button class="btn dark reserve">Reserve</button></div>
+    <div class="ev"><div><div class="num">03</div><div class="when">Thu · 6 pm</div></div><div><h3>The winter list party</h3><p>New books, mulled drinks, all welcome</p></div><div>Free · Drop in</div><button class="btn dark reserve">Reserve</button></div>
+  </div>
+</section>
+
+<section id="membership" class="dark" style="padding-left:5vw;padding-right:5vw">
+  <p class="kicker">Membership</p>
+  <h2>A place in the room, <em>monthly.</em></h2>
+  <p class="lead">Demo tiers only — membership pricing is to be confirmed by the Sala, so no prices are shown here.</p>
+  <div class="tiers">
+    <div class="tier"><h3>Reader</h3><p>Readings, events, and the Sala Letter. For readers who want to be in the room.</p><button class="btn join">Join</button></div>
+    <div class="tier"><h3>Member</h3><p>Everything in Reader, plus a listing in the member-book directory.</p><button class="btn join">Join</button></div>
+    <div class="tier"><h3>Patron</h3><p>Everything in Member, plus support for fellowships and retreats.</p><button class="btn join">Join</button></div>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">The Sala Letter</p>
+  <h2>One letter, <em>a fortnight.</em></h2>
+  <p class="lead">Books, events, and member news — no noise, once a fortnight.</p>
+  <form class="letter" id="letterForm">
+    <input type="email" required placeholder="Your email address" aria-label="Email address">
+    <button class="btn dark" type="submit">Subscribe</button>
+  </form>
+  <p class="msg" id="letterMsg">Thanks — you're on the list. (Demo only, no real signup was made.)</p>
+</section>
+
+<footer id="visit">
+  <p><b style="color:var(--cream)">San Miguel Literary Sala</b> · English + Spanish</p>
+  <p>Visit, events, and membership details are shown as a demo concept. This page is not SMGLI's live site, and no contact details on this page are real.</p>
+  <p><a href="#new">New books</a> · <a href="#members">Member books</a> · <a href="#events">Events</a> · <a href="#membership">Membership</a></p>
+</footer>
+
+<script>
+  // Hero spines: tap/click also pops only that spine.
+  var label=document.getElementById('spineLabel');
+  document.querySelectorAll('.spine').forEach(function(s){
+    function pop(){document.querySelectorAll('.spine').forEach(function(o){o.classList.remove('popped')});s.classList.add('popped');label.textContent=s.getAttribute('data-title');}
+    s.addEventListener('click',pop);
+    s.addEventListener('mouseenter',function(){label.textContent=s.getAttribute('data-title')});
+    s.addEventListener('focus',function(){label.textContent=s.getAttribute('data-title')});
+  });
+  // Member-books preview: only the hovered/focused/tapped row's cover shows.
+  var cover=document.getElementById('previewCover'),motif=document.getElementById('previewMotif'),
+      ttl=document.getElementById('previewTitle'),auth=document.getElementById('previewAuthor'),
+      nm=document.getElementById('previewName'),det=document.getElementById('previewDetail');
+  function show(row){
+    document.querySelectorAll('#bookList .row').forEach(function(r){r.classList.remove('active')});
+    row.classList.add('active');
+    cover.style.background=row.getAttribute('data-cover');
+    cover.style.color=row.getAttribute('data-cover')==='#c9a86a' ? '#241012' : '#f3ead6';
+    motif.textContent=row.getAttribute('data-motif');
+    ttl.textContent=row.getAttribute('data-title');
+    auth.textContent=row.getAttribute('data-author').split(' · ')[0];
+    nm.textContent=row.getAttribute('data-title');
+    det.textContent=row.getAttribute('data-author');
+  }
+  document.querySelectorAll('#bookList .row').forEach(function(row){
+    row.addEventListener('mouseenter',function(){show(row)});
+    row.addEventListener('focus',function(){show(row)});
+    row.addEventListener('click',function(){show(row)});
+  });
+  // Read page one: expand only that card's excerpt.
+  document.querySelectorAll('[data-excerpt]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var e=document.getElementById(b.getAttribute('data-excerpt'));
+      var open=e.classList.toggle('open');
+      b.textContent=open ? 'Hide page one ↑' : 'Read page one ↓';
+    });
+  });
+  // Reserve / Join toggles.
+  document.querySelectorAll('.reserve').forEach(function(b){
+    b.addEventListener('click',function(){b.textContent=b.textContent.indexOf('Reserved')>=0 ? 'Reserve' : 'Reserved ✓';});
+  });
+  document.querySelectorAll('.join').forEach(function(b){
+    b.addEventListener('click',function(){b.textContent=b.textContent.indexOf('Joined')>=0 ? 'Join' : 'Joined ✓';});
+  });
+  // Newsletter demo confirmation.
+  document.getElementById('letterForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    document.getElementById('letterMsg').classList.add('open');
+  });
+</script>
+</body>
+</html>
