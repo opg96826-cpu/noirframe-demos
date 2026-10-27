@@ -1,0 +1,28 @@
+# Noirframe Studio — Vansh Vaghela, web designer
+
+> Noirframe Studio builds professional small-business websites in 3 days for $1,000.
+> Free demo first. $500 advance to start, $500 balance on go-live. Optional $150/month care plan.
+> Remote from India, serving the US, UK, Canada, Australia and India.
+
+## Facts
+- Name: Vansh Vaghela, Noirframe Studio
+- Service: professional business website design and build
+- Price: $1,000 one-time; $500 advance, $500 on go-live
+- Care plan: $150/month, optional, cancel anytime
+- Timeline: Day 1 free demo, Day 2 build, Day 3 launch with walkthrough
+- Included: design, services, prices, hours, booking or enquiry form, photos, mobile-first layout, launch walkthrough
+- Not included: domain/hosting renewals, ad spend (at cost)
+- Contact: noirframestudio09@gmail.com
+- Instagram: https://www.instagram.com/noir_frame_studio/
+- LinkedIn: https://www.linkedin.com/in/vansh-vaghela-017071446/
+- Portfolio: https://opg96826-cpu.github.io/noirframe-demos/portfolio.html
+- Studio site: https://noirframe-studio.vercel.app
+- Demos hub: https://opg96826-cpu.github.io/noirframe-demos/
+
+## Demos (live concepts, not claimed client work)
+- Focused-on Construction: https://focused-on-construction.vercel.app/
+- Pearl Dental: https://opg96826-cpu.github.io/noirframe-demos/pearl-dental/
+- Wok Wave restaurant: https://opg96826-cpu.github.io/noirframe-demos/wok-wave.html
+- Needkingdom Bakery: https://opg96826-cpu.github.io/noirframe-demos/needkingdom-bakery.html
+- Sala Literary membership: https://smgli-literary.vercel.app/
+- Luxe Locks salon: https://opg96826-cpu.github.io/noirframe-demos/luxe-locks/
