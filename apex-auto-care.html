@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Auto Care — Auto Repair & Detailing | Demo Concept</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#121212;color:#f2f2f2;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.demo-badge{position:fixed;top:12px;right:12px;z-index:99;background:#ffb400;color:#111;font-weight:800;font-size:12px;letter-spacing:1px;padding:6px 12px;border-radius:20px}
+header{position:sticky;top:0;z-index:90;background:rgba(18,18,18,.95);display:flex;justify-content:space-between;align-items:center;padding:14px 5%}
+.logo{font-size:22px;font-weight:900;letter-spacing:.5px}.logo span{color:#ff5a1f}
+nav a{margin-left:22px;font-size:14px;opacity:.85}nav a:hover{opacity:1;color:#ff5a1f}
+.btn{display:inline-block;background:#ff5a1f;color:#fff;font-weight:700;padding:12px 24px;border-radius:8px;border:0;cursor:pointer;font-size:15px}
+.btn:hover{background:#e04a12}
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45)}
+.hero-inner{position:relative;padding:0 5%;max-width:800px}
+.hero h1{font-size:52px;line-height:1.1;margin-bottom:16px}
+.hero h1 span{color:#ff5a1f}
+.hero p{font-size:18px;opacity:.9;margin-bottom:24px;max-width:600px}
+.hero .btn{margin-right:12px}
+.trust{display:flex;gap:32px;flex-wrap:wrap;margin-top:36px;font-size:14px}
+.trust b{font-size:22px;color:#ffb400;display:block}
+.marquee{background:#ff5a1f;color:#fff;overflow:hidden;white-space:nowrap;padding:10px 0;font-weight:800;letter-spacing:2px;font-size:14px}
+.marquee span{display:inline-block;animation:scroll 22s linear infinite}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+section{padding:64px 5%}
+h2{font-size:32px;margin-bottom:8px}h2 span{color:#ff5a1f}
+.sub{opacity:.7;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:#1e1e1e;border-radius:14px;overflow:hidden;transition:transform .25s}
+.card:hover{transform:translateY(-6px)}
+.card img{width:100%;height:180px;object-fit:cover;transition:transform .4s}
+.card:hover img{transform:scale(1.06)}
+.card-body{padding:18px}
+.card-body h3{font-size:18px;margin-bottom:6px}
+.card-body p{font-size:14px;opacity:.75;margin-bottom:12px}
+.price{font-size:20px;font-weight:900;color:#ffb400;margin-bottom:12px}
+.small-btn{background:#2a2a2a;color:#fff;border:1px solid #444;padding:9px 16px;border-radius:6px;cursor:pointer;font-weight:700}
+.small-btn:hover{background:#ff5a1f;border-color:#ff5a1f}
+.small-btn.active{background:#ff5a1f;border-color:#ff5a1f}
+.booking{background:#1a1a1a;border-radius:16px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+label{font-size:13px;letter-spacing:1px;opacity:.7;display:block;margin-bottom:8px}
+select,input{width:100%;padding:12px;border-radius:8px;border:1px solid #444;background:#222;color:#fff;font-size:15px;margin-bottom:16px}
+.days,.times{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+#confirm{display:none;background:#17351f;border:1px solid #2e7d32;border-radius:10px;padding:16px;margin-top:8px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.gallery img{width:100%;height:200px;object-fit:cover;border-radius:12px;transition:transform .35s}
+.gallery img:hover{transform:scale(1.04)}
+.rev{background:#1e1e1e;border-radius:12px;padding:20px}
+.rev .stars{color:#ffb400;letter-spacing:2px}
+footer{background:#0a0a0a;padding:40px 5%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;font-size:14px;opacity:.85}
+.reveal{opacity:0;transform:translateY(18px);transition:all .6s}
+.reveal.on{opacity:1;transform:none}
+@media(max-width:700px){.hero h1{font-size:34px}.booking{grid-template-columns:1fr}nav{display:none}}
+</style>
+</head>
+<body>
+<div class="demo-badge">DEMO CONCEPT — NOT A REAL SHOP</div>
+<header>
+<div class="logo">APEX <span>AUTO CARE</span></div>
+<nav><a href="#services">Services</a><a href="#detailing">Detailing</a><a href="#booking">Book Now</a><a href="#reviews">Reviews</a></nav>
+<a class="btn" href="#booking">Book Service</a>
+</header>
+<section class="hero">
+<video autoplay muted loop playsinline src="https://videos.pexels.com/video-files/6159374/6159374-hd_1920_1080_30fps.mp4"></video>
+<div class="hero-inner">
+<h1>Your car, fixed right.<br><span>Back on the road fast.</span></h1>
+<p>Full-service auto repair and detailing. ASE-certified mechanics, honest prices, same-day service on most jobs. No jargon, no surprise bills.</p>
+<a class="btn" href="#booking">Book an Appointment</a>
+<a class="btn" style="background:#2a2a2a" href="#services">See Services &amp; Prices</a>
+<div class="trust">
+<div><b>4.9 ★</b>480+ happy drivers</div>
+<div><b>Same-day</b>most repairs</div>
+<div><b>12-mo</b>warranty on parts &amp; labor</div>
+</div>
+</div>
+</section>
+<div class="marquee"><span>OIL CHANGE • BRAKES • DIAGNOSTICS • TIRES • AC REPAIR • DETAILING • ENGINE • TRANSMISSION •&nbsp;</span><span>OIL CHANGE • BRAKES • DIAGNOSTICS • TIRES • AC REPAIR • DETAILING • ENGINE • TRANSMISSION •&nbsp;</span></div>
+<section id="services">
+<h2>Repair Services <span>&amp; Honest Prices</span></h2>
+<p class="sub">Tap any service to pre-select it in the booking form below.</p>
+<div class="grid">
+<div class="card reveal"><img src="https://images.pexels.com/photos/13065690/pexels-photo-13065690.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Oil change"><div class="card-body"><h3>Oil Change</h3><p>Full-synthetic oil, new filter, 21-point inspection included.</p><div class="price">from $49</div><button class="small-btn" data-service="Oil Change">Book this</button></div></div>
+<div class="card reveal"><img src="https://images.pexels.com/photos/3807297/pexels-photo-3807297.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Brake service"><div class="card-body"><h3>Brake Service</h3><p>Pads, rotors, and a free brake safety check before any work.</p><div class="price">from $129</div><button class="small-btn" data-service="Brake Service">Book this</button></div></div>
+<div class="card reveal"><img src="https://images.pexels.com/photos/4439588/pexels-photo-4439588.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Engine diagnostics"><div class="card-body"><h3>Engine Diagnostics</h3><p>Dealer-level scan tools. We find the real problem, not guesses.</p><div class="price">from $89</div><button class="small-btn" data-service="Engine Diagnostics">Book this</button></div></div>
+<div class="card reveal"><img src="https://images.pexels.com/photos/9381019/pexels-photo-9381019.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Engine tuning"><div class="card-body"><h3>Engine &amp; Tune-Up</h3><p>Plugs, filters, fluids — everything your engine needs to run smooth.</p><div class="price">from $149</div><button class="small-btn" data-service="Engine Tune-Up">Book this</button></div></div>
+<div class="card reveal"><img src="https://images.pexels.com/photos/8985453/pexels-photo-8985453.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Mechanic at work"><div class="card-body"><h3>AC &amp; Heating</h3><p>Stay cool in summer, warm in winter. Leak check included.</p><div class="price">from $99</div><button class="small-btn" data-service="AC & Heating">Book this</button></div></div>
+<div class="card reveal"><img src="https://images.pexels.com/photos/6720533/pexels-photo-6720533.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Certified mechanic"><div class="card-body"><h3>Transmission Service</h3><p>Fluid service and repair by certified transmission techs.</p><div class="price">from $199</div><button class="small-btn" data-service="Transmission Service">Book this</button></div></div>
+</div>
+</section>
+<section id="detailing" style="padding-top:0">
+<h2>Detailing <span>Packages</span></h2>
+<p class="sub">Showroom shine, inside and out.</p>
+<div class="grid">
+<div class="card reveal"><div class="card-body"><h3>Essential Wash</h3><p>Exterior wash, wheels, windows, interior wipe-down.</p><div class="price">$79</div><button class="small-btn" data-service="Essential Wash Detail">Book this</button></div></div>
+<div class="card reveal"><div class="card-body"><h3>Full Detail</h3><p>Everything in Essential, plus wax, vacuum, shampoo, trim restore.</p><div class="price">$149</div><button class="small-btn" data-service="Full Detail">Book this</button></div></div>
+<div class="card reveal"><div class="card-body"><h3>Showroom Detail</h3><p>Paint correction, ceramic spray, leather care, engine bay clean.</p><div class="price">$249</div><button class="small-btn" data-service="Showroom Detail">Book this</button></div></div>
+</div>
+</section>
+<section id="booking" style="padding-top:0">
+<h2>Book <span>Your Visit</span></h2>
+<p class="sub">Pick a service, day, and time. We confirm within 30 minutes during shop hours.</p>
+<div class="booking">
+<div>
+<label>SERVICE</label>
+<select id="service">
+<option>Oil Change</option><option>Brake Service</option><option>Engine Diagnostics</option><option>Engine Tune-Up</option><option>AC &amp; Heating</option><option>Transmission Service</option><option>Essential Wash Detail</option><option>Full Detail</option><option>Showroom Detail</option>
+</select>
+<label>YOUR NAME</label>
+<input id="name" type="text" placeholder="e.g. Alex Morgan">
+<label>PHONE</label>
+<input id="phone" type="tel" placeholder="(555) 000-0000">
+</div>
+<div>
+<label>DAY</label>
+<div class="days" id="days"></div>
+<label>TIME</label>
+<div class="times" id="times"></div>
+<button class="btn" id="bookBtn" style="width:100%">Confirm Booking</button>
+<div id="confirm"></div>
+</div>
+</div>
+</section>
+<section id="reviews" style="padding-top:0">
+<h2>Drivers <span>Love Us</span></h2>
+<p class="sub">Demo reviews shown for illustration in this concept demo.</p>
+<div class="grid">
+<div class="rev reveal"><div class="stars">★★★★★</div><p>"Brakes done in two hours, price exactly what they quoted. First shop I actually trust."</p><p style="margin-top:10px;opacity:.7">— Marcus T., Brake Service</p></div>
+<div class="rev reveal"><div class="stars">★★★★★</div><p>"They found an engine problem two other shops missed. Car runs like new."</p><p style="margin-top:10px;opacity:.7">— Priya S., Diagnostics</p></div>
+<div class="rev reveal"><div class="stars">★★★★★</div><p>"Full detail made my 8-year-old car look showroom fresh. Worth every dollar."</p><p style="margin-top:10px;opacity:.7">— James K., Full Detail</p></div>
+</div>
+</section>
+<section style="padding-top:0">
+<h2>From <span>The Shop Floor</span></h2>
+<div class="gallery">
+<img src="https://images.pexels.com/photos/13065691/pexels-photo-13065691.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Oil service">
+<img src="https://images.pexels.com/photos/3807297/pexels-photo-3807297.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Inspection">
+<img src="https://images.pexels.com/photos/4439588/pexels-photo-4439588.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Engine work">
+<img src="https://images.pexels.com/photos/6720533/pexels-photo-6720533.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Mechanic">
+</div>
+</section>
+<footer>
+<div><b>APEX AUTO CARE</b><br>214 Main Street<br>Mon–Sat 8:00 AM – 6:00 PM</div>
+<div><b>Call us</b><br>(555) 214-8890<br>Walk-ins welcome</div>
+<div><b>Demo concept</b><br>This is a demo website concept,<br>not a real business.</div>
+</footer>
+<script>
+const daysEl=document.getElementById('days'),timesEl=document.getElementById('times');
+const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+let selDay=null,selTime=null;
+const today=new Date();
+for(let i=0;i<7;i++){const d=new Date(today);d.setDate(today.getDate()+i);
+const b=document.createElement('button');b.className='small-btn';b.textContent=dayNames[d.getDay()]+' '+(d.getMonth()+1)+'/'+d.getDate();
+b.onclick=()=>{document.querySelectorAll('#days .small-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');selDay=b.textContent;};daysEl.appendChild(b);}
+['8:00 AM','10:00 AM','12:00 PM','2:00 PM','4:00 PM'].forEach(t=>{const b=document.createElement('button');b.className='small-btn';b.textContent=t;
+b.onclick=()=>{document.querySelectorAll('#times .small-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');selTime=t;};timesEl.appendChild(b);});
+document.querySelectorAll('[data-service]').forEach(b=>{b.onclick=()=>{document.getElementById('service').value=b.dataset.service;document.getElementById('booking').scrollIntoView({behavior:'smooth'});};});
+document.getElementById('bookBtn').onclick=()=>{
+const svc=document.getElementById('service').value,name=document.getElementById('name').value.trim();
+if(!name||!selDay||!selTime){alert('Please add your name and pick a day and time.');return;}
+const c=document.getElementById('confirm');c.style.display='block';
+c.innerHTML='<b>Booking confirmed (demo).</b><br>'+svc+' — '+selDay+' at '+selTime+' for '+name+'. We will call to confirm shortly.';};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
