@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Napolene Jewel — Bespoke Filipino jewellery, made one piece at a time</title>
-<meta name="description" content="Napolene Jewel demo: bespoke Filipino jewellery, made one piece at a time in Poblacion, Makati.">
+<title>Napolene Jewel — Bespoke Filipino ice cream, churned in small batches</title>
+<meta name="description" content="Napolene Jewel demo: bespoke Filipino ice cream, churned in small batches in Poblacion, Makati.">
 <style>
   :root{--plum:#2e1233;--plum2:#451f4e;--purple:#7a4a8d;--lav:#ece8f1;--lav2:#f4f1f7;--mustard:#f0b429;--mustard-d:#d99a10;--ink:#241a26;--muted:#6f6472}
   *{box-sizing:border-box}
@@ -13,11 +13,9 @@
   a{color:inherit}
   .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
   .demo{position:fixed;top:0;left:0;right:0;z-index:100;background:#171017;color:#f5ecd7;text-align:center;font-size:11px;letter-spacing:.14em;padding:7px 10px}
-  /* announcement marquee */
   .marquee{background:var(--plum);color:var(--mustard);overflow:hidden;white-space:nowrap;padding:9px 0;font-family:'Arial Rounded MT Bold','Trebuchet MS',sans-serif;font-size:13px;letter-spacing:.14em}
   .marquee span{display:inline-block;padding-left:100%;animation:scroll 26s linear infinite}
   @keyframes scroll{to{transform:translateX(-100%)}}
-  /* header */
   header{position:sticky;top:30px;z-index:90;background:#fff;border-bottom:1px solid #e8e2ec}
   .head{display:flex;align-items:center;gap:28px;padding:14px 0;flex-wrap:wrap}
   .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
@@ -29,7 +27,6 @@
   nav a:hover{color:var(--plum);text-decoration:underline}
   .order-btn{margin-left:auto;background:var(--plum);color:#fff;text-decoration:none;padding:11px 24px;border-radius:999px;font-weight:bold;font-size:14px}
   .order-btn:hover{background:var(--plum2)}
-  /* hero */
   .hero{background:var(--plum);color:#fff;padding:56px 0 64px;overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
   .hero h1{font-size:58px;margin:0 0 18px}
@@ -54,17 +51,13 @@
   .dots{display:flex;gap:9px;justify-content:center;margin-top:14px}
   .dots button{width:11px;height:11px;border-radius:50%;border:2px solid #fff;background:transparent;cursor:pointer;padding:0}
   .dots button.on{background:var(--mustard);border-color:var(--mustard)}
-  /* mustard marquee strip */
   .strip{background:var(--mustard);color:var(--plum);overflow:hidden;white-space:nowrap;padding:16px 0;font-family:'Arial Rounded MT Bold',sans-serif;font-size:26px}
   .strip span{display:inline-block;padding-left:60%;animation:scroll 30s linear infinite}
-  .wave{display:block;width:100%;height:18px;margin-bottom:-1px}
-  /* sections */
   section{padding:72px 0}
   .sec-head{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:end;margin-bottom:30px}
   .sec-head h2{font-size:44px;margin:0}
   .sec-head p{color:var(--muted);font-size:17px;margin:0}
   .lav{background:var(--lav)}
-  /* carousel */
   .car{overflow-x:auto;scroll-snap-type:x mandatory;display:flex;gap:22px;padding:6px 2px 22px;scrollbar-width:thin}
   .card{flex:0 0 330px;scroll-snap-align:start;background:#fff;border-radius:0 0 18px 18px;box-shadow:0 2px 14px rgba(46,18,51,.08);overflow:hidden}
   .card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
@@ -81,13 +74,11 @@
   .car-nav .bar{flex:1;height:4px;background:#ddd6e4;border-radius:99px;overflow:hidden}
   .car-nav .bar i{display:block;height:100%;background:var(--mustard);width:38%}
   .car-nav a{font-size:14px;font-weight:bold;color:var(--plum)}
-  /* statement */
   .statement{background:var(--purple);color:#fff;text-align:center;padding:84px 0;position:relative;overflow:hidden}
   .statement h2{font-size:56px;color:var(--mustard);margin:0 0 14px}
   .statement p{max-width:620px;margin:0 auto;color:#efe6f5;font-size:18px}
   .floatpic{position:absolute;width:118px;height:118px;object-fit:cover;border-radius:50%;border:5px solid rgba(255,255,255,.85)}
   .floatpic.l{left:6%;top:26%}.floatpic.r{right:6%;bottom:22%}
-  /* map */
   .mapsec{background:var(--plum);color:#fff}
   .map-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:36px;align-items:stretch}
   .map-panel{background:#3c1a44;border-radius:24px;padding:26px;position:relative;min-height:430px}
@@ -101,7 +92,6 @@
   .rows li b{font-family:'Arial Rounded MT Bold',sans-serif;font-size:19px}
   .rows li a{color:var(--mustard);font-weight:bold}
   .rows li span{font-size:13px;color:#d9cdea;display:block}
-  /* feature panels */
   .panel{display:grid;grid-template-columns:1fr 1fr;min-height:440px}
   .panel img{width:100%;height:100%;object-fit:cover;display:block;min-height:340px}
   .panel-txt{padding:64px 52px;display:flex;flex-direction:column;justify-content:center}
@@ -111,7 +101,6 @@
   .dark{background:var(--plum);color:#fff}.dark p{color:#e6dcf0}
   .must{background:var(--mustard);color:var(--plum)}.must p{color:#4a3600}
   .midp{background:var(--purple);color:#fff}.midp p{color:#efe6f5}
-  /* timeline */
   .tl{display:flex;gap:22px;overflow-x:auto;padding:6px 2px 22px;scroll-snap-type:x mandatory}
   .tcard{flex:0 0 320px;scroll-snap-align:start;background:#fff;border-radius:20px;padding:22px;box-shadow:0 2px 14px rgba(46,18,51,.08)}
   .tcard .n{font-family:'Arial Rounded MT Bold',sans-serif;font-size:44px;color:var(--purple);line-height:1}
@@ -119,16 +108,13 @@
   .tcard .d{font-size:12px;font-weight:bold;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
   .tcard h3{font-size:21px;margin:6px 0 8px}
   .tcard p{font-size:15px;color:#4a4150;margin:0}
-  /* closing cta */
   .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
   .cta-grid h2{font-size:44px;margin:0 0 14px}
   .cta-grid p{font-size:17px;color:var(--muted)}
   .cta-grid img{width:100%;border-radius:28px;aspect-ratio:4/3;object-fit:cover}
-  /* box bar */
   #boxbar{position:sticky;bottom:0;z-index:80;background:var(--plum);color:#fff;padding:13px 0;font-size:14px}
   #boxbar .wrap{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
   #boxbar button{background:var(--mustard);color:var(--plum);border:0;border-radius:999px;padding:10px 22px;font-weight:bold;font-size:14px;cursor:pointer}
-  /* footer */
   footer{background:var(--plum);color:#fff;padding:64px 0 30px;position:relative}
   .foot-badge{width:64px;height:64px;border-radius:50%;background:#fff;color:var(--plum);display:flex;align-items:center;justify-content:center;font-family:'Arial Rounded MT Bold',sans-serif;font-size:30px}
   .foot-state{font-family:'Arial Rounded MT Bold',sans-serif;font-size:26px;margin:16px 0 36px;max-width:700px}
@@ -152,13 +138,13 @@
 <body>
 <div class="demo">DEMO CONCEPT — NOT A REAL SHOP · TEMPLATE RECREATED 1:1 IN STRUCTURE · ALL IMAGES NEW, NONE FROM THE ORIGINAL SITE</div>
 
-<div class="marquee"><span>BESPOKE FILIPINO JEWELLERY ✦ MADE ONE PIECE AT A TIME ✦ NAMED STONE SOURCES ✦ DELIVERED ACROSS METRO MANILA ✦ BESPOKE FILIPINO JEWELLERY ✦ MADE ONE PIECE AT A TIME ✦ NAMED STONE SOURCES ✦ DELIVERED ACROSS METRO MANILA ✦&nbsp;</span></div>
+<div class="marquee"><span>BESPOKE FILIPINO ICE CREAM ✦ CHURNED IN SMALL BATCHES ✦ NAMED FARMS ON EVERY LID ✦ DELIVERED ACROSS METRO MANILA ✦ BESPOKE FILIPINO ICE CREAM ✦ CHURNED IN SMALL BATCHES ✦ NAMED FARMS ON EVERY LID ✦ DELIVERED ACROSS METRO MANILA ✦&nbsp;</span></div>
 
 <header>
   <div class="wrap head">
     <a class="logo" href="#"><span class="logo-mark">N</span><span class="logo-word">Napolene Jewel<i>.</i></span></a>
     <nav>
-      <a href="#collection">The collection</a><a href="#collection">Pieces</a><a href="#order">Events</a><a href="#gifts">Gifts</a><a href="#bespoke">Bespoke</a><a href="#story">Our story</a><a href="#story">Journal</a>
+      <a href="#collection">The carte</a><a href="#collection">Bites</a><a href="#order">Events</a><a href="#gifts">Gifts</a><a href="#bespoke">Bespoke</a><a href="#story">Our story</a><a href="#story">Journal</a>
     </nav>
     <a class="order-btn" href="#order">Order</a>
   </div>
@@ -167,36 +153,36 @@
 <section class="hero" style="padding-top:56px">
   <div class="wrap hero-grid">
     <div>
-      <h1>Jewellery that carries where it came from</h1>
-      <p>We buy gold from one refiner in Benguet and pearls from one family farm in Palawan, then finish each piece at our bench in Poblacion, twelve pieces at a time.</p>
+      <h1>Ice cream that tastes of the farm it grew on</h1>
+      <p>Ube from one Bohol cooperative, milk from one Laguna carabao dairy — churned in Poblacion, twelve pints at a time.</p>
       <div class="pills">
         <a class="pill mustard" href="#collection">Build your box of four</a>
-        <a class="pill outline" href="#collection">See the collection</a>
+        <a class="pill outline" href="#collection">See this season's carte</a>
       </div>
       <div class="facts">
-        <div><b>12 pieces</b>per small batch</div>
-        <div><b>Named sources</b>on every card</div>
-        <div><b>Metro Manila</b>delivery by our rider</div>
+        <div><b>12 pints</b>per small batch</div>
+        <div><b>Named farms</b>printed on every lid</div>
+        <div><b>Metro Manila</b>delivery in dry ice</div>
       </div>
     </div>
     <div class="showcase">
       <div class="circle-wrap">
-        <svg class="ring" viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#circ">NAPOLENE JEWEL • BESPOKE • POBLACION • MADE BY HAND • </textPath></text></svg>
-        <img id="heroImg" src="assets/hero-1.jpg" alt="Featured piece">
+        <svg class="ring" viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#circ">NAPOLENE JEWEL • BESPOKE • POBLACION • SMALL BATCH • </textPath></text></svg>
+        <img id="heroImg" src="assets/hero-1.jpg" alt="Featured flavour">
       </div>
-      <div class="cap"><b id="heroName">Poblacion Solitaire</b><span id="heroSrc">Diamond · set at our bench, Makati</span></div>
+      <div class="cap"><b id="heroName">Kinampay Ube</b><span id="heroSrc">Bohol · Bohol cooperative</span></div>
       <div class="dots" id="heroDots"></div>
     </div>
   </div>
 </section>
 
-<div class="strip"><span>PALAWAN PEARLS ✦ BENGUET GOLD ✦ CEBU CAPIZ ✦ MINDORO JADE ✦ GUIMARAS TOURMALINE ✦ BICOL LAVA STONE ✦ PALAWAN PEARLS ✦ BENGUET GOLD ✦ CEBU CAPIZ ✦ MINDORO JADE ✦ GUIMARAS TOURMALINE ✦ BICOL LAVA STONE ✦&nbsp;</span></div>
+<div class="strip"><span>KINAMPAY UBE ✦ PILI &amp; BURNT CARAMEL ✦ CARABAO MANGO ✦ DAVAO CACAO ✦ KAPENG BARAKO ✦ KESONG PUTI &amp; GUAVA ✦ CALAMANSI &amp; PANDAN ✦ MUSCOVADO &amp; PINIPIG ✦ KINAMPAY UBE ✦ PILI &amp; BURNT CARAMEL ✦ CARABAO MANGO ✦ DAVAO CACAO ✦ KAPENG BARAKO ✦ KESONG PUTI &amp; GUAVA ✦ CALAMANSI &amp; PANDAN ✦ MUSCOVADO &amp; PINIPIG ✦&nbsp;</span></div>
 
 <section class="lav" id="collection">
   <div class="wrap">
     <div class="sec-head">
-      <h2>This season's collection</h2>
-      <p>Six pieces stay all year and two leave when their stones run out. Pick any four and we deliver them in a keepsake box.</p>
+      <h2>This season's carte</h2>
+      <p>Six flavours stay all year and two leave when their harvest ends. Pick any four and we deliver them in dry ice.</p>
     </div>
     <div class="car" id="car"></div>
     <div class="car-nav">
@@ -212,67 +198,67 @@
   <img class="floatpic l" src="assets/stmt-1.jpg" alt="">
   <img class="floatpic r" src="assets/stmt-2.jpg" alt="">
   <div class="wrap">
-    <h2>Recycled 18k gold.</h2>
-    <p>It holds its colour, so a piece needs no plating and no harsh dips. What comes through is the stone, the gold, and the hand that finished it.</p>
+    <h2>Carabao milk.</h2>
+    <p>Nearly twice as rich as cow's milk, so our base takes less cream, less sugar, and no stabilisers — leaving the ube, the pili, and the mango to speak.</p>
   </div>
 </section>
 
 <section class="mapsec">
   <div class="wrap">
     <div class="sec-head">
-      <h2 style="color:#fff">Where each stone comes from</h2>
-      <p style="color:#d9cdea">We buy straight from the source and print its name on the card. Tap a row to see who mined, cut, or grew what.</p>
+      <h2 style="color:#fff">Where each flavour comes from</h2>
+      <p style="color:#d9cdea">We buy straight from the farm and print its name on the lid. Tap a row to see who grows what.</p>
     </div>
     <div class="map-grid">
       <div class="map-panel">
         <h3>The Philippines, our sources</h3>
-        <p style="color:#d9cdea;font-size:14px">Eight sources, one per piece. Gold pins mark the two limited stones.</p>
-        <div class="pin" style="left:18%;top:30%"><i></i>Palawan</div>
-        <div class="pin" style="left:52%;top:22%"><i></i>Benguet</div>
-        <div class="pin alt" style="left:62%;top:48%"><i></i>Cebu</div>
-        <div class="pin alt" style="left:48%;top:62%"><i></i>Poblacion</div>
-        <div class="pin alt" style="left:40%;top:74%"><i></i>Laguna</div>
-        <div class="pin alt" style="left:26%;top:58%"><i></i>Mindoro</div>
-        <div class="pin" style="left:66%;top:70%"><i></i>Guimaras</div>
-        <div class="pin" style="left:74%;top:38%"><i></i>Bicol</div>
+        <p style="color:#d9cdea;font-size:14px">Eight sources, one per flavour. Gold pins mark the two seasonal flavours.</p>
+        <div class="pin" style="left:18%;top:30%"><i></i>Bohol</div>
+        <div class="pin" style="left:52%;top:22%"><i></i>Sorsogon</div>
+        <div class="pin alt" style="left:62%;top:48%"><i></i>Guimaras</div>
+        <div class="pin alt" style="left:48%;top:62%"><i></i>Davao</div>
+        <div class="pin alt" style="left:40%;top:74%"><i></i>Batangas</div>
+        <div class="pin alt" style="left:26%;top:58%"><i></i>Laguna</div>
+        <div class="pin" style="left:66%;top:70%"><i></i>Mindoro</div>
+        <div class="pin" style="left:74%;top:38%"><i></i>Negros</div>
       </div>
       <ol class="rows" id="srcRows">
-        <li><b>Palawan</b><div><a>Palawan Pearl Strand</a><span>Palawan pearl farm</span></div></li>
-        <li><b>Benguet</b><div><a>Baguio Heritage Chain</a><span>Baguio refiner</span></div></li>
-        <li><b>Cebu</b><div><a>Cebu Pearl Drops</a><span>Cebu shell artisans</span></div></li>
-        <li><b>Poblacion</b><div><a>Poblacion Solitaire</a><span>Our bench, Makati</span></div></li>
-        <li><b>Laguna</b><div><a>Laguna Gold Pendant</a><span>Laguna workshop</span></div></li>
-        <li><b>Mindoro</b><div><a>Mindoro Diamond Band</a><span>Mindoro cutters</span></div></li>
-        <li><b>Guimaras</b><div><a>Guimaras Tourmaline Ring · limited</a><span>Guimaras stone hunters</span></div></li>
-        <li><b>Bicol</b><div><a>Bicol Gold Bracelet · limited</a><span>Bicol makers</span></div></li>
+        <li><b>Bohol</b><div><a>Kinampay Ube</a><span>Bohol cooperative, Ubay</span></div></li>
+        <li><b>Sorsogon</b><div><a>Pili &amp; Burnt Caramel</a><span>Family farm, Bulan</span></div></li>
+        <li><b>Guimaras</b><div><a>Carabao Mango Sorbet</a><span>Orchard, Jordan</span></div></li>
+        <li><b>Davao</b><div><a>Davao Cacao 72</a><span>Estate, Calinan</span></div></li>
+        <li><b>Batangas</b><div><a>Kapeng Barako</a><span>Coffee growers, Lipa</span></div></li>
+        <li><b>Laguna</b><div><a>Kesong Puti &amp; Guava</a><span>Dairy, Santa Cruz</span></div></li>
+        <li><b>Mindoro</b><div><a>Calamansi &amp; Pandan Sorbet · seasonal</a><span>Growers, Naujan</span></div></li>
+        <li><b>Negros</b><div><a>Muscovado &amp; Toasted Pinipig · seasonal</a><span>Cane growers, Bago</span></div></li>
       </ol>
     </div>
   </div>
 </section>
 
 <div id="bespoke" class="panel">
-  <img src="assets/panel-bespoke.jpg" alt="A piece being finished by hand">
+  <img src="assets/panel-bespoke.jpg" alt="A flavour being rolled fresh">
   <div class="panel-txt dark">
-    <h2>A piece that exists only for you</h2>
-    <p>Bring us a sketch, an heirloom, or stones from a family ring. We design one piece around it, fit it with you twice, and finish it for your event.</p>
-    <a class="pill mustard" href="#order">Commission a piece</a>
+    <h2>A flavour that exists only at your table</h2>
+    <p>Bring us a recipe card, a jar of latik, or mangoes from the family tree. We build one flavour around it, taste it with you twice, and churn it for your event.</p>
+    <a class="pill mustard" href="#order">Commission a flavour</a>
   </div>
 </div>
 
 <div id="gifts" class="panel">
   <div class="panel-txt must">
-    <h2>Four pieces in a keepsake box</h2>
-    <p>Pick any four pieces. They travel in a lacquered keepsake box you can keep, with a card naming each stone. ₱19,800, delivered anywhere in Metro Manila.</p>
+    <h2>Four provinces, one timber box</h2>
+    <p>Pick any four pints. They travel in dry ice inside a timber box you can send back, with a card naming each farm. ₱1,980, delivered anywhere in Metro Manila.</p>
     <a class="pill plum" href="#collection">Pick your four</a>
   </div>
-  <img src="assets/panel-box.jpg" alt="The Napolene keepsake box">
+  <img src="assets/panel-box.jpg" alt="Pints ready for the box">
 </div>
 
 <div id="story" class="panel">
-  <img src="assets/panel-founder.jpg" alt="At the Napolene bench">
+  <img src="assets/panel-founder.jpg" alt="Inside the Napolene shop">
   <div class="panel-txt midp">
-    <h2>It started with a ring in Poblacion</h2>
-    <p>Napolene spent summers at her grandmother's bench, learning to set stones before she could reach the torch. Napolene Jewel still uses that bench, and the same single torch it opened with in 2023.</p>
+    <h2>It started with one carabao in Laguna</h2>
+    <p>Our founder spent summers on a small family dairy in Santa Cruz. Napolene still uses its milk, and the same single churner it opened with in 2023.</p>
     <a class="pill mustard" href="#order">Read our story</a>
   </div>
 </div>
@@ -280,15 +266,15 @@
 <section class="lav">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Mine to masterpiece in five days</h2>
-      <p>Every piece follows the same week, which is why we sell out by Saturday and never finish stock ahead.</p>
+      <h2>Farm to freezer in five days</h2>
+      <p>Every pint follows the same week, which is why we sell out by Saturday and never freeze stock ahead.</p>
     </div>
     <div class="tl">
-      <div class="tcard"><div class="n">01</div><img src="assets/step-1.jpg" alt=""><div class="d">Sunday</div><h3>Sourced and shipped</h3><p>Pearls leave Palawan on the ferry. Gold travels down from Benguet by bus.</p></div>
-      <div class="tcard"><div class="n">02</div><img src="assets/step-2.jpg" alt=""><div class="d">Monday, 5am</div><h3>Melted low</h3><p>Gold arrives from the refiner and is melted gently the same morning.</p></div>
-      <div class="tcard"><div class="n">03</div><img src="assets/step-3.jpg" alt=""><div class="d">Monday night</div><h3>Set overnight</h3><p>The piece rests for twelve hours with stones set by hand, one at a time.</p></div>
-      <div class="tcard"><div class="n">04</div><img src="assets/step-4.jpg" alt=""><div class="d">Tuesday</div><h3>Finished twelve at a time</h3><p>Small batches, so the bench is never fuller than it should be. Cards are hand-written with the source.</p></div>
-      <div class="tcard"><div class="n">05</div><img src="assets/step-5.jpg" alt=""><div class="d">Wednesday to Saturday</div><h3>At your door in its box</h3><p>Our own rider, across Metro Manila. Presented in its keepsake box, ready to wear.</p></div>
+      <div class="tcard"><div class="n">01</div><img src="assets/step-1.jpg" alt=""><div class="d">Sunday</div><h3>Picked and shipped</h3><p>Mango leaves Guimaras on the night ferry. Ube and pili travel by bus from Bohol and Bicol.</p></div>
+      <div class="tcard"><div class="n">02</div><img src="assets/step-2.jpg" alt=""><div class="d">Monday, 5am</div><h3>Milk, pasteurised low</h3><p>Carabao milk arrives from Santa Cruz and is pasteurised gently the same morning.</p></div>
+      <div class="tcard"><div class="n">03</div><img src="assets/step-3.jpg" alt=""><div class="d">Monday night</div><h3>Aged overnight</h3><p>The base rests for twelve hours with roasted ube, toasted pili, or cold-steeped barako.</p></div>
+      <div class="tcard"><div class="n">04</div><img src="assets/step-4.jpg" alt=""><div class="d">Tuesday</div><h3>Churned twelve at a time</h3><p>Small batches, so the machine is never fuller than it should be. Lids are hand-labelled with the farm.</p></div>
+      <div class="tcard"><div class="n">05</div><img src="assets/step-5.jpg" alt=""><div class="d">Wednesday to Saturday</div><h3>At your door in dry ice</h3><p>Our own rider, across Metro Manila. Let the pint stand eight minutes, then scoop.</p></div>
     </div>
   </div>
 </section>
@@ -296,31 +282,31 @@
 <section class="lav" id="order" style="padding-top:0">
   <div class="wrap cta-grid">
     <div>
-      <h2>Order for this week's pieces</h2>
-      <p>Build a box of four above, or message us on Viber. We reply within the hour while the bench is open.</p>
+      <h2>Order for this week's delivery</h2>
+      <p>Build a box of four above, or message us on Viber. We reply within the hour while the kitchen is open.</p>
       <div class="pills">
         <a class="pill plum" href="#collection">Build a box of four</a>
-        <a class="pill outplum" href="#bespoke">Commission a piece</a>
+        <a class="pill outplum" href="#bespoke">Commission a flavour</a>
       </div>
     </div>
-    <img src="assets/cta.jpg" alt="A finished Napolene piece">
+    <img src="assets/cta.jpg" alt="A finished Napolene flavour">
   </div>
 </section>
 
-<div id="boxbar"><div class="wrap"><span id="boxtext">Your box: pick up to 4 pieces from the collection.</span><button onclick="alert('Demo only — no order is placed.')">Reserve this box</button></div></div>
+<div id="boxbar"><div class="wrap"><span id="boxtext">Your box: pick up to 4 pints from the carte.</span><button onclick="alert('Demo only — no order is placed.')">Reserve this box</button></div></div>
 
 <footer>
   <div class="wrap">
     <div class="foot-badge">N</div>
-    <div class="foot-state">Bespoke Filipino jewellery, made one piece at a time — and every stone named.</div>
+    <div class="foot-state">Bespoke Filipino ice cream, churned in small batches — and every farm named.</div>
     <div class="foot-cols">
       <div><h4>Visit</h4>Poblacion, Makati City<br>Tuesday to Sunday, 11am to 8pm</div>
-      <div><h4>Order</h4><a href="#collection">Order pieces</a><a href="#gifts">Gifts</a><a href="#bespoke">Bespoke</a></div>
-      <div><h4>Work with us</h4><a href="#order">Carts and events</a><a href="#order">Wholesale</a><a href="#story">Our story</a></div>
+      <div><h4>Order</h4><a href="#collection">Order pints</a><a href="#gifts">Bites and bars</a><a href="#gifts">Gifts</a></div>
+      <div><h4>Work with us</h4><a href="#order">Carts and trucks</a><a href="#bespoke">Commission a flavour</a><a href="#order">Wholesale</a></div>
       <div><h4>Follow</h4><a href="#order">Instagram</a><a href="#order">Viber (demo)</a><br>hello@napolene-jewel.example</div>
     </div>
     <div class="giant">NAPOLENE JEWEL<i>.</i></div>
-    <div class="foot-bottom"><span>© 2026 Napolene Jewel — demo concept, not a real shop. All images newly sourced for this demo; none from the original site.</span><span><a href="#order">Visit / Order →</a></span></div>
+    <div class="foot-bottom"><span>© 2026 Napolene Jewel — demo concept, not a real shop. All images newly sourced for this demo; none from the original site. From ₱495 a pint.</span><span><a href="#order">Visit / Order →</a></span></div>
   </div>
 </footer>
 
@@ -328,11 +314,11 @@
 
 <script>
 const HERO=[
- {img:"assets/hero-1.jpg",n:"Poblacion Solitaire",s:"Diamond · set at our bench, Makati"},
- {img:"assets/hero-2.jpg",n:"Baguio Heritage Chain",s:"18k gold · Benguet refiner"},
- {img:"assets/hero-3.jpg",n:"Palawan Pearl Strand",s:"South Sea pearls · Palawan"},
- {img:"assets/hero-4.jpg",n:"Laguna Gold Pendant",s:"Gold · Laguna workshop"},
- {img:"assets/hero-5.jpg",n:"Mindoro Diamond Band",s:"Diamond · Mindoro cutters"}
+ {img:"assets/hero-1.jpg",n:"Kinampay Ube",s:"Bohol · Bohol cooperative"},
+ {img:"assets/hero-2.jpg",n:"Davao Cacao 72",s:"Davao · Estate, Calinan"},
+ {img:"assets/hero-3.jpg",n:"Carabao Mango Sorbet",s:"Guimaras · Orchard, Jordan"},
+ {img:"assets/hero-4.jpg",n:"Rainbow Cone",s:"Poblacion · The Napolene shop"},
+ {img:"assets/hero-5.jpg",n:"Celebration Sundae",s:"Poblacion · The Napolene shop"}
 ];
 let hi=0;const hImg=document.getElementById('heroImg'),hN=document.getElementById('heroName'),hS=document.getElementById('heroSrc'),hD=document.getElementById('heroDots');
 HERO.forEach((_,i)=>{const b=document.createElement('button');b.onclick=()=>showHero(i);hD.appendChild(b);});
@@ -340,25 +326,25 @@ function showHero(i){hi=i;hImg.src=HERO[i].img;hN.textContent=HERO[i].n;hS.textC
 showHero(0);setInterval(()=>showHero((hi+1)%HERO.length),5000);
 
 const PIECES=[
- {n:"Palawan Pearl Strand",s:"Palawan",p:12800,img:"assets/card-1.jpg",hot:false},
- {n:"Baguio Heritage Chain",s:"Benguet",p:18500,img:"assets/card-2.jpg",hot:false},
- {n:"Cebu Pearl Drops",s:"Cebu",p:4950,img:"assets/card-3.jpg",hot:false},
- {n:"Poblacion Solitaire",s:"Poblacion",p:28500,img:"assets/card-4.jpg",hot:false},
- {n:"Laguna Gold Pendant",s:"Laguna",p:9800,img:"assets/card-5.jpg",hot:false},
- {n:"Mindoro Diamond Band",s:"Mindoro",p:7400,img:"assets/card-6.jpg",hot:false},
- {n:"Guimaras Tourmaline Ring",s:"Guimaras",p:22400,img:"assets/card-7.jpg",hot:true},
- {n:"Bicol Gold Bracelet",s:"Bicol",p:6900,img:"assets/card-8.jpg",hot:true}
+ {n:"Kinampay Ube",s:"Bohol",p:495,img:"assets/card-1.jpg",hot:false},
+ {n:"Pili & Burnt Caramel",s:"Sorsogon",p:495,img:"assets/card-2.jpg",hot:false},
+ {n:"Carabao Mango Sorbet",s:"Guimaras",p:495,img:"assets/card-3.jpg",hot:false},
+ {n:"Davao Cacao 72",s:"Davao",p:495,img:"assets/card-4.jpg",hot:false},
+ {n:"Kapeng Barako",s:"Batangas",p:495,img:"assets/card-5.jpg",hot:false},
+ {n:"Kesong Puti & Guava",s:"Laguna",p:495,img:"assets/card-6.jpg",hot:false},
+ {n:"Calamansi & Pandan Sorbet",s:"Mindoro",p:495,img:"assets/card-7.jpg",hot:true},
+ {n:"Muscovado & Toasted Pinipig",s:"Negros",p:495,img:"assets/card-8.jpg",hot:true}
 ];
 const box=[];const car=document.getElementById('car');
 PIECES.forEach((pc,i)=>{
   const d=document.createElement('article');d.className='card';
-  d.innerHTML='<img src="'+pc.img+'" alt="'+pc.n+'"><div class="card-body"><span class="tag">'+pc.s+'</span>'+(pc.hot?'<span class="tag hot">Limited</span>':'')+'<h3>'+pc.n+'</h3><div class="card-foot"><span class="price">₱'+pc.p.toLocaleString('en-PH')+'</span><button class="add">＋ Add to box</button></div></div>';
+  d.innerHTML='<img src="'+pc.img+'" alt="'+pc.n+'"><div class="card-body"><span class="tag">'+pc.s+'</span>'+(pc.hot?'<span class="tag hot">Seasonal</span>':'')+'<h3>'+pc.n+'</h3><div class="card-foot"><span class="price">₱'+pc.p.toLocaleString('en-PH')+'</span><button class="add">＋ Add to box</button></div></div>';
   d.querySelector('.add').onclick=(e)=>{e.stopPropagation();
     const k=box.indexOf(i),btn=d.querySelector('.add');
     if(k>=0){box.splice(k,1);btn.classList.remove('in');btn.textContent='＋ Add to box';}
-    else{if(box.length>=4){alert('A box holds four pieces. Remove one first.');return;}box.push(i);btn.classList.add('in');btn.textContent='✓ In your box';}
+    else{if(box.length>=4){alert('A box holds four pints. Remove one first.');return;}box.push(i);btn.classList.add('in');btn.textContent='✓ In your box';}
     const t=document.getElementById('boxtext');
-    if(!box.length)t.textContent='Your box: pick up to 4 pieces from the collection.';
+    if(!box.length)t.textContent='Your box: pick up to 4 pints from the carte.';
     else{const tot=box.reduce((a,j)=>a+PIECES[j].p,0);t.textContent='Your box ('+box.length+'/4): '+box.map(j=>PIECES[j].n).join(' · ')+' — ₱'+tot.toLocaleString('en-PH');}
   };
   car.appendChild(d);
