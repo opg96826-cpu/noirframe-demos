@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SELERA RESTAURANT — Coming Soon</title>
+<meta name="description" content="The Selera Restaurant — modern Asian soul food, coming soon. Bold biryanis, smoky kebabs, and a table with your name on it.">
+<style>
+:root{
+  --bg:#0d0a07; --bg2:#141009; --card:#181209;
+  --gold:#e8a33d; --gold2:#f5c15c; --cream:#f5ead6; --muted:#a89880;
+  --line:rgba(232,163,61,.16);
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--gold);color:#0d0a07}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .35s ease;padding:22px 0}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--serif);font-size:26px;letter-spacing:.28em;color:var(--cream)}
+.brand span{color:var(--gold)}
+.nav-links{display:flex;gap:34px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.nav-links a{transition:color .25s}
+.nav-links a:hover{color:var(--gold2)}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1206;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:14px 30px;border-radius:100px;border:none;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,163,61,.35)}
+.btn.ghost{background:transparent;color:var(--cream);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--gold);box-shadow:none}
+nav.scrolled{background:rgba(13,10,7,.88);backdrop-filter:blur(14px);padding:12px 0;border-bottom:1px solid var(--line)}
+@media(max-width:760px){.nav-links{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:heroDrift 22s ease-in-out infinite alternate}
+@keyframes heroDrift{from{transform:scale(1.08) translateY(0)}to{transform:scale(1.14) translateY(-18px)}}
+.hero-veil{position:absolute;inset:0;background:
+  radial-gradient(ellipse 90% 60% at 50% 110%,rgba(232,163,61,.22),transparent 60%),
+  linear-gradient(180deg,rgba(13,10,7,.62) 0%,rgba(13,10,7,.35) 40%,rgba(13,10,7,.94) 100%)}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:140px 24px 90px;width:100%}
+.hero-eyebrow{display:inline-block;font-size:13px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold2);border:1px solid var(--line);padding:10px 26px 10px 32px;border-radius:100px;margin-bottom:28px;background:rgba(13,10,7,.5);backdrop-filter:blur(6px)}
+.hero h1{font-size:clamp(46px,8.5vw,108px);letter-spacing:.06em;color:var(--cream);text-shadow:0 4px 40px rgba(0,0,0,.6)}
+.hero h1 .thin{display:block;font-size:.42em;letter-spacing:.5em;color:var(--gold2);margin-bottom:10px}
+.hero-tag{font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.4vw,23px);color:var(--cream);opacity:.92;max-width:640px;margin:26px auto 0}
+.hero-ctas{display:flex;gap:16px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:11px;letter-spacing:.3em;text-transform:uppercase;z-index:2;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+/* ---------- MARQUEE ---------- */
+.marquee{background:linear-gradient(90deg,#1c130a,#241809,#1c130a);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;transform:rotate(-1deg) scale(1.02)}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:scroll 30s linear infinite;width:max-content}
+.marquee span{font-family:var(--serif);font-size:20px;letter-spacing:.22em;color:var(--gold2);padding:0 28px;text-transform:uppercase}
+.marquee span.dot{color:var(--gold);padding:0}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:110px 0;position:relative}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 64px}
+.sec-head h2{font-size:clamp(34px,5vw,56px);margin:16px 0 18px}
+.sec-head p{color:var(--muted);font-size:17px}
+
+/* ---------- STORY ---------- */
+.story{background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(232,163,61,.08),transparent 65%)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.story-img{border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative}
+.story-img img{width:100%;height:520px;object-fit:cover;transition:transform .8s ease}
+.story-img:hover img{transform:scale(1.05)}
+.story-img::after{content:"";position:absolute;inset:0;border:1px solid var(--line);border-radius:18px;pointer-events:none}
+.story-copy h2{font-size:clamp(32px,4.4vw,50px);margin:16px 0 22px}
+.story-copy p{color:#d8c9ae;font-size:17.5px;margin-bottom:18px}
+.story-copy p strong{color:var(--gold2);font-weight:600}
+@media(max-width:860px){.story-grid{grid-template-columns:1fr}.story-img img{height:360px}}
+
+/* ---------- MENU ---------- */
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:1020px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.menu-grid{grid-template-columns:1fr}}
+.dish{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .35s,box-shadow .35s,border-color .35s}
+.dish:hover{transform:translateY(-8px);border-color:rgba(232,163,61,.45);box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(232,163,61,.12)}
+.dish-img{height:210px;overflow:hidden;position:relative}
+.dish-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.dish:hover .dish-img img{transform:scale(1.08)}
+.dish-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(13,10,7,.55))}
+.dish-body{padding:22px}
+.dish-body h3{font-size:21px;margin-bottom:8px;color:var(--cream)}
+.dish-body p{font-size:14.5px;color:var(--muted);margin-bottom:14px;min-height:66px}
+.price{font-family:var(--serif);font-size:20px;color:var(--gold2)}
+.price small{font-size:12px;color:var(--muted);font-family:var(--sans);letter-spacing:.1em}
+
+/* ---------- CREATORS ---------- */
+.creators{background:linear-gradient(180deg,var(--bg) 0%,#17100a 50%,var(--bg) 100%)}
+.creator-card{position:relative;border:1px solid rgba(232,163,61,.3);border-radius:24px;overflow:hidden;padding:70px 60px;text-align:center;background:
+  radial-gradient(ellipse 80% 90% at 50% 120%,rgba(232,163,61,.16),transparent 60%),
+  rgba(20,14,8,.7)}
+.creator-card::before{content:"";position:absolute;inset:0;background:url('assets/36445024.jpg') center/cover;opacity:.14;pointer-events:none}
+.creator-card>*{position:relative}
+.creator-card h2{font-size:clamp(30px,4.6vw,52px);margin:16px 0 20px}
+.creator-card h2 em{color:var(--gold2);font-style:normal}
+.creator-card p{color:#d8c9ae;font-size:17px;max-width:640px;margin:0 auto 14px}
+.creator-perks{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:30px 0 36px}
+.perk{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);border:1px solid var(--line);padding:10px 20px;border-radius:100px;background:rgba(13,10,7,.55)}
+.wa-btn{display:inline-flex;align-items:center;gap:12px;background:#1f9d55;color:#fff;font-weight:700;font-size:15px;letter-spacing:.06em;padding:16px 36px;border-radius:100px;transition:transform .25s,box-shadow .25s}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(31,157,85,.4)}
+@media(max-width:640px){.creator-card{padding:48px 26px}}
+
+/* ---------- GALLERY ---------- */
+.g-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.g-grid{grid-template-columns:repeat(2,1fr)}}
+.g-item{border-radius:14px;overflow:hidden;height:280px;position:relative;cursor:pointer}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease,filter .5s}
+.g-item:hover img{transform:scale(1.07)}
+.g-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(13,10,7,.5));opacity:0;transition:opacity .4s}
+.g-item:hover::after{opacity:1}
+
+/* ---------- VISIT ---------- */
+.visit{position:relative;overflow:hidden}
+.visit-bg{position:absolute;inset:0}
+.visit-bg img{width:100%;height:100%;object-fit:cover}
+.visit-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,10,7,.96),rgba(13,10,7,.82)),radial-gradient(ellipse 70% 50% at 50% 100%,rgba(232,163,61,.14),transparent 60%)}
+.visit-inner{position:relative;z-index:2;text-align:center}
+.visit-inner h2{font-size:clamp(36px,5.4vw,60px);margin:16px 0 18px}
+.visit-inner>p{color:var(--muted);font-size:17px;max-width:560px;margin:0 auto}
+.visit-cards{display:flex;gap:20px;justify-content:center;margin:48px 0;flex-wrap:wrap}
+.v-card{background:rgba(24,18,9,.75);border:1px solid var(--line);border-radius:16px;padding:30px 36px;min-width:230px;backdrop-filter:blur(8px)}
+.v-card .k{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.v-card .v{font-family:var(--serif);font-size:21px;color:var(--cream)}
+.v-card a.v{color:var(--gold2);border-bottom:1px solid var(--line)}
+.notify{max-width:480px;margin:0 auto;display:flex;gap:10px}
+.notify input{flex:1;background:rgba(24,18,9,.8);border:1px solid var(--line);border-radius:100px;padding:15px 24px;color:var(--cream);font-size:15px;outline:none;font-family:var(--sans)}
+.notify input:focus{border-color:var(--gold)}
+.notify input::placeholder{color:var(--muted)}
+.notify-ok{display:none;color:var(--gold2);font-family:var(--serif);font-size:19px;font-style:italic;margin-top:6px}
+@media(max-width:560px){.notify{flex-direction:column}.notify .btn{width:100%}}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:44px 0;text-align:center}
+footer .brand{font-size:20px}
+footer p{color:var(--muted);font-size:13px;margin-top:12px}
+footer .demo-note{font-size:12px;color:#6b5f4c;margin-top:6px}
+
+/* ---------- REVEAL ---------- */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">SELERA<span>.</span></a>
+    <div class="nav-links">
+      <a href="#story">Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#creators">Creators</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a class="btn" href="#visit" style="padding:11px 24px">Get Opening Invite</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="assets/6260921.jpg" alt="Signature chicken dum biryani at Selera"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Coming Soon</span>
+    <h1><span class="thin">THE</span>SELERA RESTAURANT</h1>
+    <p class="hero-tag">Where appetite meets art — modern Asian soul food, fired up over real coals and served with unforgettable flavour.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="#menu">Explore the Menu</a>
+      <a class="btn ghost" href="#visit">Get Opening Invite</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mtrack">
+    <span>Chicken Dum Biryani</span><span class="dot">✦</span><span>Seekh Kebab</span><span class="dot">✦</span><span>Mutton Karahi</span><span class="dot">✦</span><span>Opening Soon</span><span class="dot">✦</span><span>Butter Chicken</span><span class="dot">✦</span><span>Tandoori Naan</span><span class="dot">✦</span><span>Gulab Jamun</span><span class="dot">✦</span><span>Opening Soon</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-img rv"><img src="assets/36445024.jpg" alt="Fresh naan baking in the clay tandoor oven"></div>
+    <div class="story-copy rv d1">
+      <span class="eyebrow">Our Story</span>
+      <h2>Born from hunger.<br>Raised on flavour.</h2>
+      <p><strong>Selera</strong> means appetite — and ours is endless. We started with a single clay oven, family recipes passed down three generations, and one stubborn belief: great food should make you close your eyes on the first bite.</p>
+      <p>From slow-steamed dum biryanis to kebabs kissed by real charcoal, every plate at Selera is built the old way — <strong>no shortcuts, no compromises</strong>. The doors aren't open yet. But the fire is already lit.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Signature Menu</span>
+      <h2>Dishes worth the wait</h2>
+      <p>A first taste of what's coming — bold, smoky, and unapologetically desi with a modern twist.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="dish rv"><div class="dish-img"><img src="assets/6260921.jpg" alt="Chicken dum biryani"></div><div class="dish-body"><h3>Chicken Dum Biryani</h3><p>Slow-steamed basmati layered with saffron, crisp fried onions and fall-off-the-bone chicken.</p><div class="price">Rs. 450</div></div></div>
+      <div class="dish rv d1"><div class="dish-img"><img src="assets/6522616.jpg" alt="Chicken tikka"></div><div class="dish-body"><h3>Chicken Tikka Angara</h3><p>Char-grilled tikka marinated overnight, kissed with smoked chili and melted butter.</p><div class="price">Rs. 380</div></div></div>
+      <div class="dish rv d2"><div class="dish-img"><img src="assets/28674565.jpg" alt="Mutton karahi"></div><div class="dish-body"><h3>Mutton Karahi Gosht</h3><p>Wok-tossed mutton in fresh tomato, ginger and green chili — the Lahori way.</p><div class="price">Rs. 650</div></div></div>
+      <div class="dish rv d3"><div class="dish-img"><img src="assets/40262818.jpg" alt="Butter chicken with naan"></div><div class="dish-body"><h3>Butter Chicken &amp; Naan</h3><p>Silky tomato-makhani curry scooped up with blistered tandoori naan.</p><div class="price">Rs. 520</div></div></div>
+      <div class="dish rv"><div class="dish-img"><img src="assets/10508207.jpg" alt="Selera mixed grill platter"></div><div class="dish-body"><h3>Selera Mixed Grill</h3><p>Seekh kebab, malai boti and tikka — a sizzling tour of the coals, built for sharing.</p><div class="price">Rs. 750</div></div></div>
+      <div class="dish rv d1"><div class="dish-img"><img src="assets/28674556.jpg" alt="Fresh naan basket"></div><div class="dish-body"><h3>Tandoor Naan Basket</h3><p>Garlic, cheese and rogani naan slapped fresh onto the clay oven walls.</p><div class="price">Rs. 180</div></div></div>
+      <div class="dish rv d2"><div class="dish-img"><img src="assets/15014919.jpg" alt="Gulab jamun"></div><div class="dish-body"><h3>Shahi Gulab Jamun</h3><p>Warm syrup-soaked jamuns with a whisper of cardamom. The only right ending.</p><div class="price">Rs. 220</div></div></div>
+      <div class="dish rv d3"><div class="dish-img"><img src="assets/9609854.jpg" alt="Family handi biryani"></div><div class="dish-body"><h3>Family Handi Biryani</h3><p>A full handi of dum biryani with raita and salad — built for the whole table.</p><div class="price">Rs. 1,200 <small>/ serves 4–5</small></div></div></div>
+    </div>
+  </div>
+</section>
+<section class="creators" id="creators">
+  <div class="wrap">
+    <div class="creator-card rv">
+      <span class="eyebrow">Calling All Creators</span>
+      <h2>Food vloggers &amp; content creators — <em>you're on the guest list.</em></h2>
+      <p>Before our doors open to the public, we're opening our kitchen to the people who tell food stories best. Collaborate with us, shoot the sizzle, taste everything first.</p>
+      <p><strong style="color:var(--gold2)">Exclusive tasting invitations. Behind-the-scenes access. Dishes made for the camera.</strong></p>
+      <div class="creator-perks">
+        <span class="perk">Priority Tasting Invite</span>
+        <span class="perk">Collab Features</span>
+        <span class="perk">Launch-Day Coverage</span>
+      </div>
+      <a class="wa-btn" href="https://wa.me/923096990562?text=Hi%20Selera!%20I%27m%20a%20food%20creator%20and%20I%27d%20love%20to%20collaborate%20on%20your%20launch." target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.4 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1l.8-.9c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.4 0 .1 0 .5-.4 1.4z"/></svg>
+        Collaborate on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Sneak Peek</span>
+      <h2>A feast for the eyes first</h2>
+      <p>Shot fresh from our kitchen trials — this is the standard every plate will meet.</p>
+    </div>
+    <div class="g-grid">
+      <div class="g-item rv"><img src="assets/4439740.jpg" alt="Rice pilaf and soups on the table"></div>
+      <div class="g-item rv d1"><img src="assets/9609848.jpg" alt="Biryani with curry and raita, top view"></div>
+      <div class="g-item rv d2"><img src="assets/15750726.jpg" alt="Selera dining room"></div>
+      <div class="g-item rv"><img src="assets/15626998.jpg" alt="Moody restaurant interior"></div>
+      <div class="g-item rv d1"><img src="assets/5491052.jpg" alt="Evening bar ambiance"></div>
+      <div class="g-item rv d2"><img src="assets/36445024.jpg" alt="Naan baking in the tandoor"></div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="visit-bg"><img src="assets/15750726.jpg" alt=""></div>
+  <div class="visit-veil"></div>
+  <div class="wrap visit-inner">
+    <span class="eyebrow rv">Opening Soon</span>
+    <h2 class="rv">Be first through<br>the door.</h2>
+    <p class="rv">Doors open very soon. Leave your email and we'll send your opening-night invite — plus a little something for the table.</p>
+    <div class="visit-cards">
+      <div class="v-card rv"><div class="k">Find Us</div><div class="v">Opening soon near you</div></div>
+      <div class="v-card rv d1"><div class="k">Call Us</div><a class="v" href="tel:+923096990562">0309 6990562</a></div>
+      <div class="v-card rv d2"><div class="k">Hours</div><div class="v">Announced soon</div></div>
+    </div>
+    <form class="notify rv" id="notifyForm">
+      <input type="email" id="notifyEmail" placeholder="your@email.com" required aria-label="Email for opening invite">
+      <button class="btn" type="submit">Notify Me</button>
+    </form>
+    <p class="notify-ok" id="notifyOk">You're on the list — see you at the opening. 🔥</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">SELERA<span>.</span></div>
+    <p>Modern Asian soul food — coming soon.</p>
+    <p class="demo-note">Demo concept crafted by Noirframe Studio</p>
+  </div>
+</footer>
+
+<script>
+// Sticky nav condense
+var nav = document.getElementById('nav');
+function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+// Reveal on scroll
+var io = new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+// Marquee: duplicate track for seamless loop
+var mt = document.getElementById('mtrack');
+mt.innerHTML += mt.innerHTML;
+
+// Notify form (demo — no backend)
+document.getElementById('notifyForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var em = document.getElementById('notifyEmail');
+  if(!em.value || em.value.indexOf('@') < 0){ em.focus(); return; }
+  this.style.display = 'none';
+  document.getElementById('notifyOk').style.display = 'block';
+});
+</script>
+</body>
+</html>
